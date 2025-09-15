@@ -129,24 +129,40 @@ body {
 }
 
 /* Background gradients for slides */
+
 .slide:nth-child(1) {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: url(images/slide1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .slide:nth-child(2) {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: url(images/slide2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .slide:nth-child(3) {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: url(images/slide3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .slide:nth-child(4) {
-    background: linear-gradient(135deg, #45627c 0%, #259d33 100%);
+    background: url(images/slide4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .slide:nth-child(5) {
-    background: linear-gradient(135deg, #484f55 0%, #534c70 100%);
+    background: url(images/slide5.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .slide-content {
@@ -249,12 +265,11 @@ body {
 }
 /* Project About Section with Dark Overlay */
 .project-about-section {
-    background: linear-gradient( rgba(21, 128, 61, 0.15)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23333" width="1000" height="600"/></svg>');
+    background: linear-gradient( #262828);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 400px;
+    min-height: 250px;
     display: flex;
     align-items: center;
     position: relative;
@@ -267,17 +282,18 @@ body {
 }
 
 .project-about-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
     font-weight: 600;
     color: #ffffff;
 }
 
 .project-about-section p {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
     color: #a7a9a9b3;
     line-height: 1.8;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     opacity: 0.9;
 }
@@ -285,12 +301,11 @@ body {
 
 /* Featured Section with Dark Overlay */
 .featured-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(21, 128, 61, 0.15)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23222" width="1000" height="600"/></svg>');
+    background: linear-gradient(#1f2121);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 5rem 0;
+    padding: 1rem 0;
     position: relative;
 }
 
@@ -407,7 +422,7 @@ body {
 .cards-wrapper {
     flex: 1;
     overflow: hidden;
-    margin: 0 60px;
+    /* margin: 0 60px; */
     width: calc(3 * (320px + 2rem)); /* Show exactly 3 cards */
 }
 
@@ -421,8 +436,7 @@ body {
 
 /* Destination Cards - FIXED for horizontal layout */
 .destination-card {
-    background: linear-gradient( rgba(21, 128, 61, 0.15)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23333" width="1000" height="600"/></svg>');
+    background: linear-gradient( #262828);
     border-radius: 15px;
     overflow: hidden;
     width: 320px; /* Fixed width */
