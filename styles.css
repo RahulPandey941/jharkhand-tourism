@@ -236,6 +236,316 @@ body {
     transform: scale(1.2);
 }
 
+
+
+/* Project Description Section */
+
+
+/* Container for content sections */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+/* Project About Section with Dark Overlay */
+.project-about-section {
+    background: linear-gradient( rgba(21, 128, 61, 0.15)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23333" width="1000" height="600"/></svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.project-about-section .overlay {
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+.project-about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.project-about-section p {
+    font-size: 1.1rem;
+    color: #a7a9a9b3;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+
+/* Featured Section with Dark Overlay */
+.featured-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(21, 128, 61, 0.15)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23222" width="1000" height="600"/></svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 5rem 0;
+    position: relative;
+}
+
+.featured-section .overlay {
+    width: 100%;
+    color: #ffffff;
+}
+
+.featured-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.featured-item:hover {
+    transform: translateY(-5px);
+}
+
+.featured-item.large {
+    min-height: 300px;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(67, 160, 71, 0.8));
+}
+
+.featured-content {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-content .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.featured-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.featured-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+/* Carousel Navigation Buttons - IMPROVED STYLING */
+.carousel-btn {
+    background: linear-gradient(135deg, rgba(21, 128, 61, 0.9), rgba(16, 185, 129, 0.9));
+    color: #ffffff;
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(21, 128, 61, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+    background: linear-gradient(135deg, rgba(21, 128, 61, 1), rgba(16, 185, 129, 1));
+    transform: scale(1.15);
+    box-shadow: 0 8px 25px rgba(21, 128, 61, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-btn:active {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(21, 128, 61, 0.4);
+}
+
+
+/* Circular Carousel Container - FIXED */
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.cards-wrapper {
+    flex: 1;
+    overflow: hidden;
+    margin: 0 60px;
+    width: calc(3 * (320px + 2rem)); /* Show exactly 3 cards */
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row; /* Force horizontal layout */
+    transition: transform 0.5s ease;
+    gap: 2rem;
+    width: calc(6 * (320px + 2rem)); /* Total width for all 6 cards */
+}
+
+/* Destination Cards - FIXED for horizontal layout */
+.destination-card {
+    background: linear-gradient( rgba(21, 128, 61, 0.15)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23333" width="1000" height="600"/></svg>');
+    border-radius: 15px;
+    overflow: hidden;
+    width: 320px; /* Fixed width */
+    min-width: 320px; /* Prevent shrinking */
+    max-width: 320px; /* Prevent growing */
+    flex-shrink: 0; /* Don't allow shrinking */
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive fixes for horizontal layout */
+@media screen and (max-width: 768px) {
+    .cards-wrapper {
+        width: calc(2 * (280px + 2rem)); /* Show exactly 2 cards on tablet */
+    }
+    
+    .cards-container {
+        width: calc(6 * (280px + 2rem)); /* Total width for all 6 cards */
+    }
+    
+    .destination-card {
+        width: 280px;
+        min-width: 280px;
+        max-width: 280px;
+    }
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(21, 128, 61, 0.5);
+}
+
+/* Card Image Section */
+.card-image {
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+/* Different background gradients for variety */
+.destination-card:nth-child(1) .card-image {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.destination-card:nth-child(2) .card-image {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.destination-card:nth-child(3) .card-image {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.destination-card:nth-child(4) .card-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.destination-card:nth-child(5) .card-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.destination-card:nth-child(6) .card-image {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.card-tag {
+    background: #fbbf24;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Card Content */
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #a7a9a9b3;
+}
+
+.best-time {
+    font-size: 0.9rem !important;
+    color: #22c55e !important;
+    font-weight: 500;
+    margin-bottom: 1.5rem !important;
+}
+
+.explore-btn {
+    background: #22c55e;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.explore-btn:hover {
+    background: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+}
+
+
 /* Footer Styles */
 .footer {
     background: #333;
@@ -382,4 +692,78 @@ body {
 
 .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+/* Responsive Design for Featured Sections */
+@media screen and (max-width: 768px) {
+    .project-about-section {
+        padding: 3rem 0;
+        background-attachment: scroll;
+    }
+    
+    .project-about-section h2 {
+        font-size: 2rem;
+    }
+    
+    .featured-section {
+        padding: 3rem 0;
+        background-attachment: scroll;
+    }
+    
+    .featured-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .featured-item.large {
+        min-height: 250px;
+    }
+    
+    .featured-content {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .project-about-section h2,
+    .featured-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .project-about-section p {
+        font-size: 1rem;
+    }
+    
+    .featured-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .featured-content {
+        padding: 1rem;
+    }
+}
+
+
+/* Responsive Design for Carousel Section */
+@media screen and (max-width: 480px) {
+    .cards-wrapper {
+        width: 250px; /* Show exactly 1 card on mobile */
+    }
+    
+    .cards-container {
+        width: calc(6 * (250px + 2rem)); /* Total width for all 6 cards */
+    }
+    
+    .destination-card {
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+    }
 }
