@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jharkhand Tourism - Discover Nature & Culture</title>
+    <title>Jharkhand Tourism - AI-Powered Digital Platform</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -14,17 +19,18 @@
         <div class="nav-container">
             <!-- Logo -->
             <div class="nav-logo">
-                <a href="#home">Your Logo</a>
+                <a href="#home"><i class="fas fa-mountain"></i> Jharkhand Tourism</a>
             </div>
 
             <!-- Navigation Menu -->
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">Destinations</a></li>
-                <li class="nav-item"><a href="#services" class="nav-link">Virtual Tours</a></li>
-                <li class="nav-item"><a href="#portfolio" class="nav-link">Marketplace</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Homestays</a></li>
-                <li class="nav-item"><a href="#blog" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li class="nav-item"><a href="#virtual-tours" class="nav-link">Virtual Tours</a></li>
+                <li class="nav-item"><a href="#marketplace" class="nav-link">Marketplace</a></li>
+                <li class="nav-item"><a href="#homestays" class="nav-link">Homestays</a></li>
+                <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="#itinerary" class="nav-link">Plan Trip</a></li>
             </ul>
 
 
@@ -38,16 +44,15 @@
     </nav>
 
     <!-- Main Content with Slideshow Background -->
-    <main class="main-content">
+    <main class="main-content" id="home">
         <div class="slideshow-container">
             <!-- Slide 1 -->
             <div class="slide active">
                 <div class="slide-content">
-                    <h1>Discover Jharkhand</h1>
-                    <p>Experience the untouched beauty of nature and rich tribal culture</p>
+                    <h1>Discover Authentic Jharkhand</h1>
+                    <p>Your gateway to reliable information, local experiences & inclusive tourism.</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn primary">Explore Destinations</a>
-                        <a href="#" class="btn secondary">Plan Your Trip</a>
+                        <a href="#destinations" class="btn primary">Start Exploring</a>
                     </div>
                 </div>
             </div>
@@ -55,11 +60,11 @@
             <!-- Slide 2 -->
             <div class="slide">
                 <div class="slide-content">
-                    <h1>Rich Cultural Heritage</h1>
-                    <p>Immerse yourself in ancient traditions and vibrant festivals</p>
+                    <h1>Destinations & Cultural Activities</h1>
+                    <p>Find trusted info on sights, traditions & events.</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn primary">Cultural Tours</a>
-                        <a href="#" class="btn secondary">Learn More</a>
+                        <a href="#destinations" class="btn primary">Explore</a>
+                        <a href="#events" class="btn secondary">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -67,11 +72,11 @@
             <!-- Slide 3 -->
             <div class="slide">
                 <div class="slide-content">
-                    <h1>Natural Wonders</h1>
-                    <p>Explore pristine forests, hills, and wildlife sanctuaries</p>
+                    <h1>Transport & Accommodation</h1>
+                    <p>Plan your trip with verified local options.</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn primary">Nature Trails</a>
-                        <a href="#" class="btn secondary">Book Now</a>
+                        <a href="#homestays" class="btn primary">Find Stays</a>
+                        <a href="#maps" class="btn secondary">Transport</a>
                     </div>
                 </div>
             </div>
@@ -79,11 +84,11 @@
             <!-- Slide 4 -->
             <div class="slide">
                 <div class="slide-content">
-                    <h1>Heritage Sites</h1>
-                    <p>Visit historical monuments and architectural marvels</p>
+                    <h1>Empowering Local Communities</h1>
+                    <p>Connect directly with artisans, guides & small businesses.</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn primary">Heritage Tours</a>
-                        <a href="#" class="btn secondary">Contact Today</a>
+                        <a href="#marketplace" class="btn primary">Shop Local</a>
+                        <a href="#chatbot" class="btn secondary">Talk to Us</a>
                     </div>
                 </div>
             </div>
@@ -91,11 +96,11 @@
             <!-- Slide 5 -->
             <div class="slide">
                 <div class="slide-content">
-                    <h1>Authentic Experiences</h1>
-                    <p>Stay with locals and experience traditional hospitality</p>
+                    <h1>Sustainable Tourism</h1>
+                    <p>Make travel more inclusive, organized & eco-friendly.</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn primary">Homestays</a>
-                        <a href="#" class="btn secondary">Find Stays</a>
+                        <a href="#itinerary" class="btn primary">Plan Now</a>
+                        <a href="#analytics" class="btn secondary">See Impact</a>
                     </div>
                 </div>
             </div>
@@ -117,23 +122,27 @@
     <section class="project-about-section">
         <div class="overlay">
             <div class="container">
-                <h2>Welcome to Jharkhand</h2>
-                <p>Jharkhand, the "Land of Forests," offers an incredible blend of natural beauty, rich tribal culture, and historical significance. From cascading waterfalls to dense forests, from ancient temples to vibrant tribal festivals, Jharkhand promises an unforgettable journey for every traveler..</p>
+                <h2>Our Mission</h2>
+                <p>Tourists often struggle to access reliable information about destinations, transportation,
+                    accommodations, and cultural activities. Meanwhile, local artisans, tribal communities, and
+                    small-scale service providers remain excluded from the digital ecosystem. Our platform bridges this
+                    gap — offering authentic information while connecting and empowering local communities.</p>
             </div>
         </div>
     </section>
 
 
-        <!-- Featured Content Section with Carousel Cards -->
-    <section class="featured-section">
+    <!-- Featured Content Section with Carousel Cards -->
+    <section class="featured-section" id="destinations">
         <div class="overlay">
             <div class="container">
                 <h2>Featured Destinations</h2>
-                
-                <div class="carousel-container">
+                <div class="carousel-container" data-carousel="destinations">
+
+
                     <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
-                    
-                    <div class="cards-wrapper">
+
+                    <div class="cards-wrapper" id="hello">
                         <div class="cards-container" id="cardsContainer">
                             <!-- Card 1 -->
                             <div class="destination-card">
@@ -142,12 +151,13 @@
                                 </div>
                                 <div class="card-content">
                                     <h3>Netarhat</h3>
-                                    <p>Known as the Queen of Chotanagpur, Netarhat offers sweeping plateau views and serene sunrises.</p>
+                                    <p>Known as the Queen of Chotanagpur, Netarhat offers sweeping plateau views and
+                                        serene sunrises.</p>
                                     <p class="best-time">Best: October to March</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
                             </div>
-                            
+
                             <!-- Card 2 -->
                             <div class="destination-card">
                                 <div class="card-image">
@@ -155,7 +165,8 @@
                                 </div>
                                 <div class="card-content">
                                     <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and peaceful lake vistas.</p>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -168,7 +179,8 @@
                                 </div>
                                 <div class="card-content">
                                     <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and peaceful lake vistas.</p>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -181,7 +193,8 @@
                                 </div>
                                 <div class="card-content">
                                     <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and peaceful lake vistas.</p>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -194,7 +207,8 @@
                                 </div>
                                 <div class="card-content">
                                     <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and peaceful lake vistas.</p>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -207,20 +221,557 @@
                                 </div>
                                 <div class="card-content">
                                     <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and peaceful lake vistas.</p>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                    
+
                     <button class="carousel-btn next-btn" id="nextBtn">›</button>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+
+
+    <!-- Homestay  -->
+
+    <!-- Homestay Section with Carousel -->
+    <section class="homestay-section" id="homestays">
+        <div class="overlay">
+            <div class="container">
+                <h2>Experience Authentic Homestays</h2>
+                <p class="section-subtitle">Stay with local families and experience traditional Jharkhand hospitality
+                </p>
+
+                <div class="carousel-container" id="homestay" data-carousel="homestay">
+                    <button class="carousel-btn prev-btn" id="btn1" data-direction="prev">‹</button>
+
+                    <div class="cards-wrapper" id="hi">
+                        <div class="cards-container" id="homestayContainer">
+                            <!-- Card 1 -->
+                            <div class="Homestay-card">
+                                <div class="card-image">
+                                    <span class="card-tag">Shivashray Homestay</span>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Netarhat</h3>
+                                    <p>Known as the Queen of Chotanagpur, Netarhat offers sweeping plateau views and
+                                        serene sunrises.</p>
+                                    <p class="best-time">Best: October to March</p>
+                                    <button class="explore-btn">Explore</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="Homestay-card">
+                                <div class="card-image">
+                                    <span class="card-tag">Scenic Drive</span>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Patratu Valley</h3>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
+                                    <p class="best-time">Best: August to February</p>
+                                    <button class="explore-btn">Explore</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="Homestay-card">
+                                <div class="card-image">
+                                    <span class="card-tag">Scenic Drive</span>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Patratu Valley</h3>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
+                                    <p class="best-time">Best: August to February</p>
+                                    <button class="explore-btn">Explore</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="Homestay-card">
+                                <div class="card-image">
+                                    <span class="card-tag">Scenic Drive</span>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Patratu Valley</h3>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
+                                    <p class="best-time">Best: August to February</p>
+                                    <button class="explore-btn">Explore</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div class="Homestay-card">
+                                <div class="card-image">
+                                    <span class="card-tag">Scenic Drive</span>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Patratu Valley</h3>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
+                                    <p class="best-time">Best: August to February</p>
+                                    <button class="explore-btn">Explore</button>
+                                </div>
+                            </div>
+
+                            <!-- Card 6 -->
+                            <div class="Homestay-card">
+                                <div class="card-image">
+                                    <span class="card-tag">Scenic Drive</span>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Patratu Valley</h3>
+                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
+                                        peaceful lake vistas.</p>
+                                    <p class="best-time">Best: August to February</p>
+                                    <button class="explore-btn">Explore</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button class="carousel-btn next-btn" id="btn2" data-direction="next">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Marketplace Section -->
+    <section class="marketplace-section" id="marketplace">
+        <div class="overlay">
+            <div class="container">
+                <h2>Local Marketplace</h2>
+                <p class="section-subtitle">Support local artisans and discover authentic tribal handicrafts</p>
+                <div class="marketplace-categories">
+                    <button class="category-btn active" data-category="handicrafts">Handicrafts</button>
+                    <button class="category-btn" data-category="textiles">Textiles</button>
+                    <button class="category-btn" data-category="jewelry">Jewelry</button>
+                    <button class="category-btn" data-category="art">Art & Paintings</button>
+                </div>
+                <div class="marketplace-grid">
+                    <div class="product-card">
+                        <div class="product-image"><span class="product-badge">Tribal Art</span></div>
+                        <div class="product-info">
+                            <h3>Santhal Wooden Sculpture</h3>
+                            <p class="artist">By: Local Artisan</p>
+                            <p class="price">₹2,500</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><span class="product-badge">Handwoven</span></div>
+                        <div class="product-info">
+                            <h3>Traditional Saree</h3>
+                            <p class="artist">By: Tribal Weaver</p>
+                            <p class="price">₹1,800</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><span class="product-badge">Jewelry</span></div>
+                        <div class="product-info">
+                            <h3>Silver Tribal Necklace</h3>
+                            <p class="artist">By: Local Craftsman</p>
+                            <p class="price">₹3,200</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- AR/VR Preview Section -->
+    <section class="ar-vr-section" id="virtual-tours">
+        <div class="overlay">
+            <div class="container">
+                <h2>AR/VR Experiences</h2>
+                <p class="section-subtitle">Preview destinations in immersive 360° virtual reality</p>
+                <div class="vr-gallery">
+                    <div class="vr-item">
+                        <div class="vr-preview">
+                            <div class="vr-overlay">
+                                <i class="fas fa-vr-cardboard"></i>
+                                <h3>Netarhat Hills</h3>
+                                <p>360° Virtual Tour</p>
+                                <button class="vr-btn">Start VR Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vr-item">
+                        <div class="vr-preview">
+                            <div class="vr-overlay">
+                                <i class="fas fa-vr-cardboard"></i>
+                                <h3>Betla National Park</h3>
+                                <p>Wildlife Safari VR</p>
+                                <button class="vr-btn">Start VR Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vr-item">
+                        <div class="vr-preview">
+                            <div class="vr-overlay">
+                                <i class="fas fa-vr-cardboard"></i>
+                                <h3>Hazaribagh Lake</h3>
+                                <p>Scenic Lake View</p>
+                                <button class="vr-btn">Start VR Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Features Grid -->
+    <section class="featured-section" id="features">
+        <div class="overlay">
+            <div class="container">
+                <h2>What You Get</h2>
+                <div class="featured-grid">
+                    <div class="featured-item">
+                        <div class="featured-content">
+                            <span class="icon"><i class="fas fa-map"></i></span>
+                            <h3>Destinations</h3>
+                            <p>Verified info on sights, trails, heritage and more.</p>
+                            <a class="btn secondary" href="#destinations">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="featured-item">
+                        <div class="featured-content">
+                            <span class="icon"><i class="fas fa-person-hiking"></i></span>
+                            <h3>Guides</h3>
+                            <p>Discover trained local guides with verification.</p>
+                            <a class="btn secondary" href="#chatbot">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="featured-item">
+                        <div class="featured-content">
+                            <span class="icon"><i class="fas fa-store"></i></span>
+                            <h3>Local Artisans</h3>
+                            <p>Shop handicrafts right from artisan communities.</p>
+                            <a class="btn secondary" href="#marketplace">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="featured-item">
+                        <div class="featured-content">
+                            <span class="icon"><i class="fas fa-calendar-check"></i></span>
+                            <h3>Booking & Planning</h3>
+                            <p>Smart itinerary planning with local options.</p>
+                            <a class="btn secondary" href="#itinerary">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="featured-item">
+                        <div class="featured-content">
+                            <span class="icon"><i class="fas fa-drum"></i></span>
+                            <h3>Cultural Events</h3>
+                            <p>Stay updated with festivals, fairs and performances.</p>
+                            <a class="btn secondary" href="#virtual-tours">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Testimonials Carousel -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="overlay">
+            <div class="container">
+                <h2>What Travellers & Partners Say</h2>
+                <div class="carousel-container" data-carousel="testimonials">
+                    <button class="carousel-btn prev-btn" id="tPrev">‹</button>
+                    <div class="cards-wrapper" id="tWrap">
+                        <div class="cards-container" id="tContainer">
+                            <div class="testimonials-card">
+                                <div class="card-content">
+                                    <p>“This platform made Jharkhand feel welcoming and easy to explore.”</p>
+                                    <p class="best-time">— Meera, Mumbai</p>
+                                </div>
+                            </div>
+                            <div class="testimonials-card">
+                                <div class="card-content">
+                                    <p>“Direct sales helped our artisan group reach new customers.”</p>
+                                    <p class="best-time">— Artisan Collective, Ranchi</p>
+                                </div>
+                            </div>
+                            <div class="testimonials-card">
+                                <div class="card-content">
+                                    <p>“Verified guides and homestays built trust for our family trip.”</p>
+                                    <p class="best-time">— Sharma Family</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next-btn" id="tNext">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Final CTA -->
+    <section class="sustainable-tourism-section" id="sustainable-tourism">
+        <div class="overlay">
+            <div class="container">
+                <h2>Join us in making tourism in Jharkhand inclusive & sustainable.</h2>
+                <div class="cta-buttons" style="margin-top:1rem;">
+                    <a href="#destinations" class="btn primary">Explore Now</a>
+                    <a href="#marketplace" class="btn secondary">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- Interactive Maps Section -->
+    <section class="maps-section" id="maps">
+        <div class="overlay">
+            <div class="container">
+                <h2>Interactive Maps & Navigation</h2>
+                <p class="section-subtitle">Explore Jharkhand with real-time location services and detailed maps</p>
+                <div class="maps-container">
+                    <div class="map-controls">
+                        <button class="map-btn active" data-type="attractions"><i class="fas fa-map-marker-alt"></i>
+                            Attractions</button>
+                        <button class="map-btn" data-type="transport"><i class="fas fa-bus"></i> Transport</button>
+                        <button class="map-btn" data-type="accommodations"><i class="fas fa-bed"></i> Stays</button>
+                        <button class="map-btn" data-type="restaurants"><i class="fas fa-utensils"></i> Food</button>
+                    </div>
+                    <div class="map-display">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map"></i>
+                            <h3>Interactive Map</h3>
+                            <p>Real-time location tracking and navigation</p>
+                            <button class="location-btn" id="getLocation"><i class="fas fa-location-arrow"></i> Get My
+                                Location</button>
+                        </div>
+                    </div>
+                    <div class="location-info" id="locationInfo">
+                        <h4>Your Location</h4>
+                        <p id="currentLocation">Location not available</p>
+                        <div class="nearby-places">
+                            <h5>Nearby Places</h5>
+                            <ul id="nearbyList">
+                                <li>Loading nearby attractions...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- AI Chatbot Section -->
+    <section class="chatbot-section" id="chatbot">
+        <div class="overlay">
+            <div class="container">
+                <h2>AI Travel Assistant</h2>
+                <p class="section-subtitle">Get personalized recommendations and instant answers in multiple languages
+                </p>
+                <div class="chatbot-container">
+                    <div class="chatbot-window">
+                        <div class="chatbot-header">
+                            <div class="chatbot-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="chatbot-info">
+                                <h3>Jharkhand AI Guide</h3>
+                                <span class="status">Online</span>
+                            </div>
+                            <div class="language-selector">
+                                <select id="languageSelect">
+                                    <option value="en">English</option>
+                                    <option value="hi">हिन्दी</option>
+                                    <option value="bn">বাংলা</option>
+                                    <option value="or">ଓଡ଼ିଆ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chatbot-messages" id="chatMessages">
+                            <div class="message bot-message">
+                                <div class="message-content">
+                                    <p>Namaste! I'm your AI travel guide for Jharkhand. How can I help you plan your
+                                        perfect trip today?</p>
+                                </div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                        <div class="chatbot-input">
+                            <input type="text" id="chatInput"
+                                placeholder="Ask about destinations, accommodations, or activities...">
+                            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="quick-btn" data-query="Best places to visit">Best Places</button>
+                            <button class="quick-btn" data-query="Homestays near me">Homestays</button>
+                            <button class="quick-btn" data-query="Cultural events">Events</button>
+                            <button class="quick-btn" data-query="Transportation options">Transport</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Analytics Dashboard (for officials) -->
+    <section class="analytics-section" id="analytics">
+        <div class="overlay">
+            <div class="container">
+                <h2>Tourism Analytics Dashboard</h2>
+                <p class="section-subtitle">Real-time insights and trends for tourism officials</p>
+                <div class="analytics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-users"></i></div>
+                        <div class="metric-content">
+                            <h3>15,420</h3>
+                            <p>Total Visitors</p>
+                            <span class="trend positive">+12%</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="metric-content">
+                            <h3>8,950</h3>
+                            <p>Active Locations</p>
+                            <span class="trend positive">+8%</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-star"></i></div>
+                        <div class="metric-content">
+                            <h3>4.7</h3>
+                            <p>Average Rating</p>
+                            <span class="trend positive">+0.2</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-rupee-sign"></i></div>
+                        <div class="metric-content">
+                            <h3>₹2.4M</h3>
+                            <p>Revenue Generated</p>
+                            <span class="trend positive">+18%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Visitor Trends</h3>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Interactive charts and graphs would be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- AI Itinerary Planner Section -->
+    <section class="itinerary-section" id="itinerary">
+        <div class="overlay">
+            <div class="container">
+                <h2>AI-Powered Trip Planner</h2>
+                <p class="section-subtitle">Get personalized itineraries based on your preferences and interests</p>
+                <div class="itinerary-form">
+                    <div class="form-group">
+                        <label>Duration of Stay</label>
+                        <select id="duration">
+                            <option value="1">1 Day</option>
+                            <option value="2">2 Days</option>
+                            <option value="3">3 Days</option>
+                            <option value="5">5 Days</option>
+                            <option value="7">1 Week</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Travel Style</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="adventure"> Adventure</label>
+                            <label><input type="checkbox" value="cultural"> Cultural</label>
+                            <label><input type="checkbox" value="nature"> Nature</label>
+                            <label><input type="checkbox" value="spiritual"> Spiritual</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget Range</label>
+                        <select id="budget">
+                            <option value="budget">Budget (₹500-1000/day)</option>
+                            <option value="mid">Mid-range (₹1000-3000/day)</option>
+                            <option value="luxury">Luxury (₹3000+/day)</option>
+                        </select>
+                    </div>
+                    <button class="generate-itinerary-btn" id="generateItinerary"><i class="fas fa-magic"></i> Generate
+                        My Itinerary</button>
+                </div>
+                <div class="itinerary-result" id="itineraryResult" style="display: none;">
+                    <h3>Your Personalized Itinerary</h3>
+                    <div class="itinerary-timeline" id="itineraryTimeline"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
 
 
 
@@ -261,6 +812,7 @@
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>

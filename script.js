@@ -1,257 +1,253 @@
-// Slideshow functionality
-let slideIndex = 1;
-let slideInterval;
+//Featured Destinations
+let scrollContainer1 = document.querySelector("#hello")
+let backbtn1 = document.getElementById("prevBtn");
+let prevbtn1 = document.getElementById("nextBtn");
+if (scrollContainer1) {
+    scrollContainer1.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer1.style.scrollBehavior = 'auto';
+        scrollContainer1.scrollLeft += evt.deltaY;
+    })
+}
 
-// Initialize slideshow
-document.addEventListener('DOMContentLoaded', function() {
-    showSlides(slideIndex);
-    startSlideshow();
-    initMobileMenu();
 
-    // Initialize carousel after a short delay to ensure elements are loaded
-    setTimeout(() => {
-        if (document.getElementById('cardsContainer')) {
-            initCircularCarousel();
+
+if (prevbtn1 && scrollContainer1) {
+    prevbtn1.addEventListener("click", () => {
+        scrollContainer1.style.scrollBehavior = 'smooth';
+        scrollContainer1.scrollLeft += 9000;
+
+    })
+}
+
+if (backbtn1 && scrollContainer1) {
+    backbtn1.addEventListener("click", () => {
+        scrollContainer1.style.scrollBehavior = 'smooth';
+        scrollContainer1.scrollLeft -= 9000;
+    })
+}
+
+//Experience Authentic Homestays
+let scrollContainer = document.querySelector("#hi")
+let backbtn = document.getElementById("btn1");
+let prevbtn = document.getElementById("btn2");
+if (scrollContainer) {
+    scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.style.scrollBehavior = 'auto';
+        scrollContainer.scrollLeft += evt.deltaY;
+    })
+}
+
+
+
+if (prevbtn && scrollContainer) {
+    prevbtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = 'smooth';
+        scrollContainer.scrollLeft += 9000;
+
+    })
+}
+
+// Testimonials carousel
+(function initTestimonials() {
+    const wrap = document.getElementById('tWrap');
+    const prev = document.getElementById('tPrev');
+    const next = document.getElementById('tNext');
+    if (!wrap || !prev || !next) return;
+    wrap.addEventListener('wheel', (evt) => {
+        evt.preventDefault();
+        wrap.style.scrollBehavior = 'auto';
+        wrap.scrollLeft += evt.deltaY;
+    });
+    next.addEventListener('click', () => { wrap.style.scrollBehavior = 'smooth'; wrap.scrollLeft += 9000; });
+    prev.addEventListener('click', () => { wrap.style.scrollBehavior = 'smooth'; wrap.scrollLeft -= 9000; });
+})();
+
+if (backbtn && scrollContainer) {
+    backbtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = 'smooth';
+        scrollContainer.scrollLeft -= 9000;
+    })
+}
+
+// GSAP animations
+window.addEventListener('load', () => {
+    if (window.gsap) {
+        gsap.from('.slide-content h1', { duration: 1, y: 30, opacity: 0 });
+        gsap.from('.slide-content p', { duration: 1, y: 20, opacity: 0, delay: 0.1 });
+        gsap.from('.cta-buttons', { duration: 1, y: 20, opacity: 0, delay: 0.1 });
+
+        if (window.ScrollTrigger) {
+            gsap.utils.toArray('section h2').forEach((el) => {
+                gsap.from(el, { scrollTrigger: el, y: 30, opacity: 0, duration: 0.8 });
+            });
+            gsap.utils.toArray('.destination-card, .Homestay-card, .product-card, .metric-card, .vr-item').forEach((el) => {
+                gsap.from(el, { scrollTrigger: el, y: 40, opacity: 0, duration: 0.6 });
+            });
         }
-    }, 500);
+    }
 });
 
-// Show specific slide
-function currentSlide(n) {
-    clearInterval(slideInterval);
-    showSlides(slideIndex = n);
-    startSlideshow();
-}
+// Slideshow auto-rotate and dots
+(function initSlideshow() {
+    const slides = Array.from(document.querySelectorAll('.slideshow-container .slide'));
+    const dots = Array.from(document.querySelectorAll('.slide-indicators .dot'));
+    if (slides.length === 0) return;
+    let index = slides.findIndex(s => s.classList.contains('active'));
+    if (index < 0) index = 0;
+    function show(i) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        slides[i].classList.add('active');
+        if (dots[i]) dots[i].classList.add('active');
+    }
+    function next() { index = (index + 1) % slides.length; show(index); }
+    const timer = setInterval(next, 5000);
+    dots.forEach((d, i) => d.addEventListener('click', () => { index = i; show(index); }));
+})();
 
-// Display slide function
-function showSlides(n) {
-    let slides = document.getElementsByClassName("slide");
-    let dots = document.getElementsByClassName("dot");
+// Simple multilingual chatbot (mock)
+(function initChatbot() {
+    const messagesEl = document.getElementById('chatMessages');
+    const inputEl = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const langSel = document.getElementById('languageSelect');
+    if (!messagesEl || !inputEl || !sendBtn) return;
 
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    const replies = {
+        en: {
+            default: 'Thanks! I will suggest top places like Netarhat, Betla, Hundru Falls and help with stays and transport.',
+            best: 'Top picks: Netarhat (sunrise), Betla National Park (wildlife), Hundru Falls (waterfall), Baidyanath Temple (heritage).',
+            homestay: 'Great homestays near Netarhat, Betla, and Hazaribagh. Average price ₹700-1200/night.',
+            events: 'Upcoming: Tribal dance festivals and local haats on weekends in Ranchi/Khunti.',
+            transport: 'Buses connect major towns; taxis available in Ranchi/Hazaribagh; trains via Hatia/Ranchi Jn.'
+        },
+        hi: {
+            default: 'धन्यवाद! मैं नेटारहाट, बेटला, हुन्द्रू फॉल्स जैसे स्थान और ठहराव व परिवहन सुझाऊँगा।',
+            best: 'शीर्ष स्थान: नेटारहाट, बेटला नेशनल पार्क, हुन्द्रू फॉल्स, बैद्यनाथ मंदिर।',
+            homestay: 'नेटारहाट, बेटला, हजारीबाग में अच्छे होमस्टे ₹700-1200/रात।',
+            events: 'आने वाले कार्यक्रम: जनजातीय नृत्य उत्सव और हाट (रांची/खूँटी)।',
+            transport: 'बसें प्रमुख शहरों को जोड़ती हैं; टैक्सी रांची/हजारीबाग में उपलब्ध; ट्रेनें हाटिया/रांची जं.।'
+        }
+    };
 
-    // Hide all slides
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active");
+    function addMessage(text, isBot) {
+        const wrap = document.createElement('div');
+        wrap.className = 'message ' + (isBot ? 'bot-message' : 'user-message');
+        const content = document.createElement('div');
+        content.className = 'message-content';
+        const p = document.createElement('p');
+        p.textContent = text;
+        content.appendChild(p);
+        const time = document.createElement('div');
+        time.className = 'message-time';
+        time.textContent = new Date().toLocaleTimeString();
+        wrap.appendChild(content);
+        wrap.appendChild(time);
+        messagesEl.appendChild(wrap);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    // Remove active class from all dots
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove("active");
+    function handleQuery(q) {
+        const lang = (langSel && replies[langSel.value]) ? langSel.value : 'en';
+        const r = replies[lang];
+        const qt = q.toLowerCase();
+        if (qt.includes('best')) return r.best;
+        if (qt.includes('home') || qt.includes('stay')) return r.homestay;
+        if (qt.includes('event')) return r.events;
+        if (qt.includes('transport') || qt.includes('bus') || qt.includes('train')) return r.transport;
+        return r.default;
     }
 
-    // Show current slide and highlight current dot
-    if (slides[slideIndex - 1]) {
-        slides[slideIndex - 1].classList.add("active");
+    function send() {
+        const txt = (inputEl.value || '').trim();
+        if (!txt) return;
+        addMessage(txt, false);
+        inputEl.value = '';
+        setTimeout(() => addMessage(handleQuery(txt), true), 400);
     }
-    if (dots[slideIndex - 1]) {
-        dots[slideIndex - 1].classList.add("active");
-    }
-}
 
-// Auto slideshow
-function nextSlide() {
-    slideIndex++;
-    showSlides(slideIndex);
-}
+    sendBtn.addEventListener('click', send);
+    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            inputEl.value = btn.getAttribute('data-query');
+            send();
+        });
+    });
+})();
 
-// Start automatic slideshow
-function startSlideshow() {
-    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-}
+// Geolocation for maps section
+(function initGeo() {
+    const btn = document.getElementById('getLocation');
+    const text = document.getElementById('currentLocation');
+    const list = document.getElementById('nearbyList');
+    if (!btn || !text) return;
+    btn.addEventListener('click', () => {
+        if (!navigator.geolocation) {
+            text.textContent = 'Geolocation not supported.';
+            return;
+        }
+        navigator.geolocation.getCurrentPosition((pos) => {
+            const { latitude, longitude } = pos.coords;
+            text.textContent = `Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)}`;
+            if (list) {
+                list.innerHTML = '<li>Betla National Park (approx)</li><li>Hundru Falls (approx)</li><li>Local Market (approx)</li>';
+            }
+        }, (err) => {
+            text.textContent = 'Permission denied or unavailable.';
+        });
+    });
+})();
 
-// Mobile menu functionality
-function initMobileMenu() {
+// Itinerary generator (mock AI)
+(function initItinerary() {
+    const btn = document.getElementById('generateItinerary');
+    const out = document.getElementById('itineraryResult');
+    const timeline = document.getElementById('itineraryTimeline');
+    if (!btn || !out || !timeline) return;
+    btn.addEventListener('click', () => {
+        const days = parseInt(document.getElementById('duration').value, 10);
+        const styles = Array.from(document.querySelectorAll('.checkbox-group input:checked')).map(i => i.value);
+        const budget = document.getElementById('budget').value;
+        const items = [];
+        for (let d = 1; d <= days; d++) {
+            let plan = `Day ${d}: `;
+            if (styles.includes('nature')) plan += 'Morning: Netarhat sunrise. ';
+            if (styles.includes('adventure')) plan += 'Noon: Trek near Patratu Valley. ';
+            if (styles.includes('cultural')) plan += 'Evening: Tribal dance and local haat. ';
+            if (styles.includes('spiritual')) plan += 'Visit Baidyanath Temple. ';
+            plan += budget === 'budget' ? 'Stay: Homestay (₹700-1000).' : budget === 'mid' ? 'Stay: Eco resort (₹1500-2500).' : 'Stay: Premium (₹3000+).';
+            items.push(plan);
+        }
+        timeline.innerHTML = items.map(t => `<div class="itinerary-item">${t}</div>`).join('');
+        out.style.display = 'block';
+        if (window.gsap) { gsap.from('.itinerary-item', { opacity: 0, y: 20, stagger: 0.1 }); }
+    });
+})();
+
+// Simple map filter buttons state
+document.querySelectorAll('.map-btn').forEach(b => {
+    b.addEventListener('click', () => {
+        document.querySelectorAll('.map-btn').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+    });
+});
+
+// Mobile menu toggle
+(function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on nav links
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    if (!hamburger || !navMenu) return;
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    navMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
-        }));
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = navMenu.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
-
-            if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-    }
-}
-
-
-// Circular Carousel functionality - FIXED
-let currentCarouselIndex = 0;
-const totalCards = 6;
-
-function initCircularCarousel() {
-    const cardsContainer = document.getElementById('cardsContainer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    
-    if (!cardsContainer || !prevBtn || !nextBtn) {
-        console.log('Carousel elements not found, retrying...');
-        return;
-    }
-    
-    // Get card width based on screen size
-    function getCardWidth() {
-        if (window.innerWidth <= 480) return 250 + 32; // card width + gap
-        if (window.innerWidth <= 768) return 280 + 32;
-        return 320 + 32;
-    }
-    
-    // Get number of visible cards based on screen size
-    function getVisibleCards() {
-        if (window.innerWidth <= 480) return 1;
-        if (window.innerWidth <= 768) return 2;
-        return 3; // Always show 3 on desktop
-    }
-    
-    // Update carousel position
-    function updateCarousel() {
-        const cardWidth = getCardWidth();
-        const translateX = -(currentCarouselIndex * cardWidth);
-        cardsContainer.style.transform = `translateX(${translateX}px)`;
-    }
-    
-    // Move to next card (circular) - FIXED
-    function moveNext() {
-        const visibleCards = getVisibleCards();
-        
-        currentCarouselIndex++;
-        
-        // If we go beyond the last possible position, wrap to beginning
-        if (currentCarouselIndex > totalCards - visibleCards) {
-            currentCarouselIndex = 0;
-        }
-        
-        updateCarousel();
-        
-        // Add button hover effect
-        nextBtn.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            nextBtn.style.transform = 'scale(1)';
-        }, 200);
-    }
-    
-    // Move to previous card (circular) - FIXED
-    function movePrev() {
-        const visibleCards = getVisibleCards();
-        
-        currentCarouselIndex--;
-        
-        // If we go below 0, wrap to the end
-        if (currentCarouselIndex < 0) {
-            currentCarouselIndex = totalCards - visibleCards;
-        }
-        
-        updateCarousel();
-        
-        // Add button hover effect
-        prevBtn.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            prevBtn.style.transform = 'scale(1)';
-        }, 200);
-    }
-    
-    // Event listeners
-    nextBtn.addEventListener('click', moveNext);
-    prevBtn.addEventListener('click', movePrev);
-    
-    // Initialize carousel position
-    updateCarousel();
-    
-    console.log('Circular carousel initialized successfully!');
-}
-
-// Smooth scrolling for anchor links
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
         });
     });
-});
-
-// Navbar background change on scroll
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-    }
-});
-
-// Pause slideshow on hover
-const slideshowContainer = document.querySelector('.slideshow-container');
-if (slideshowContainer) {
-    slideshowContainer.addEventListener('mouseenter', function() {
-        clearInterval(slideInterval);
-    });
-
-    slideshowContainer.addEventListener('mouseleave', function() {
-        startSlideshow();
-    });
-}
-
-// Add click effects to explore buttons
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        const exploreButtons = document.querySelectorAll('.explore-btn');
-        exploreButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.left = '50%';
-                ripple.style.top = '50%';
-
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-
-                console.log('Explore button clicked for:', this.closest('.destination-card').querySelector('h3').textContent);
-            });
-        });
-    }, 1000);
-});
-
-// Add CSS for ripple animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
+})();
