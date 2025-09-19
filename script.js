@@ -107,13 +107,15 @@ window.addEventListener('load', () => {
     dots.forEach((d, i) => d.addEventListener('click', () => { index = i; show(index); }));
 })();
 
-// Simple multilingual chatbot (mock)
+// Simple multilingual chatbot (mock) - Updated for modal
 (function initChatbot() {
-    const messagesEl = document.getElementById('chatMessages');
-    const inputEl = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const langSel = document.getElementById('languageSelect');
-    if (!messagesEl || !inputEl || !sendBtn) return;
+    // Wait for DOM to be ready and modal to be available
+    const initChatbotElements = () => {
+        const messagesEl = document.getElementById('chatMessages');
+        const inputEl = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const langSel = document.getElementById('languageSelect');
+        if (!messagesEl || !inputEl || !sendBtn) return false;
 
     const replies = {
         en: {
@@ -168,37 +170,328 @@ window.addEventListener('load', () => {
         setTimeout(() => addMessage(handleQuery(txt), true), 400);
     }
 
-    sendBtn.addEventListener('click', send);
-    inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
-    document.querySelectorAll('.quick-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            inputEl.value = btn.getAttribute('data-query');
-            send();
+        sendBtn.addEventListener('click', send);
+        inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
+        document.querySelectorAll('.quick-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                inputEl.value = btn.getAttribute('data-query');
+                send();
+            });
         });
-    });
+        return true;
+    };
+    
+    // Try to initialize immediately
+    if (!initChatbotElements()) {
+        // If elements not found, wait for modal to be opened
+        document.addEventListener('DOMContentLoaded', initChatbotElements);
+    }
 })();
 
-// Geolocation for maps section
-(function initGeo() {
-    const btn = document.getElementById('getLocation');
-    const text = document.getElementById('currentLocation');
-    const list = document.getElementById('nearbyList');
-    if (!btn || !text) return;
-    btn.addEventListener('click', () => {
+// Interactive Maps with Live Location Tracking
+(function initInteractiveMap() {
+    let map = null;
+    let userMarker = null;
+    let watchId = null;
+    let isTracking = false;
+    let userLocationCircle = null;
+    
+    // Map elements
+    const mapElement = document.getElementById('map');
+    const mapLoading = document.getElementById('mapLoading');
+    const getLocationBtn = document.getElementById('getLocation');
+    const trackLocationBtn = document.getElementById('trackLocation');
+    const stopTrackingBtn = document.getElementById('stopTracking');
+    const currentLocationText = document.getElementById('currentLocation');
+    const accuracyElement = document.getElementById('locationAccuracy');
+    const accuracyValue = document.getElementById('accuracyValue');
+    const nearbyList = document.getElementById('nearbyList');
+    
+    if (!mapElement) return;
+    
+    // Jharkhand attractions data
+    const jharkhandAttractions = [
+        { name: "Netarhat", lat: 23.4673, lng: 84.2600, type: "attractions", icon: "🏔️" },
+        { name: "Betla National Park", lat: 23.8833, lng: 84.1833, type: "attractions", icon: "🦌" },
+        { name: "Hundru Falls", lat: 23.4167, lng: 85.6167, type: "attractions", icon: "💧" },
+        { name: "Patratu Valley", lat: 23.6167, lng: 84.9500, type: "attractions", icon: "🌄" },
+        { name: "Hazaribagh Lake", lat: 23.9833, lng: 85.3667, type: "attractions", icon: "🏞️" },
+        { name: "Ranchi Railway Station", lat: 23.3441, lng: 85.3096, type: "transport", icon: "🚂" },
+        { name: "Birsa Munda Airport", lat: 23.3143, lng: 85.3217, type: "transport", icon: "✈️" },
+        { name: "Ranchi Bus Stand", lat: 23.3569, lng: 85.3350, type: "transport", icon: "🚌" },
+        { name: "Hotel Chanakya", lat: 23.3441, lng: 85.3096, type: "accommodations", icon: "🏨" },
+        { name: "Radisson Blu Ranchi", lat: 23.3569, lng: 85.3350, type: "accommodations", icon: "🏨" },
+        { name: "Tribal Cuisine Restaurant", lat: 23.3569, lng: 85.3350, type: "restaurants", icon: "🍽️" },
+        { name: "Jharkhand Thali House", lat: 23.3441, lng: 85.3096, type: "restaurants", icon: "🍛" }
+    ];
+    
+    // Initialize map
+    function initMap() {
+        try {
+            // Center on Jharkhand (Ranchi)
+            map = L.map('map').setView([23.3441, 85.3096], 8);
+            
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Add Jharkhand attractions
+            addAttractionMarkers();
+            
+            // Hide loading
+            mapLoading.classList.add('hidden');
+            
+        } catch (error) {
+            console.error('Error initializing map:', error);
+            showError('Failed to load map. Please refresh the page.');
+        }
+    }
+    
+    // Add attraction markers
+    function addAttractionMarkers() {
+        jharkhandAttractions.forEach(attraction => {
+            const marker = L.marker([attraction.lat, attraction.lng])
+                .addTo(map)
+                .bindPopup(`
+                    <div style="text-align: center;">
+                        <h4>${attraction.icon} ${attraction.name}</h4>
+                        <p>Type: ${attraction.type}</p>
+                        <button onclick="getDirections(${attraction.lat}, ${attraction.lng})" 
+                                style="background: #22c55e; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                            Get Directions
+                        </button>
+                    </div>
+                `);
+        });
+    }
+    
+    // Get user location once
+    function getUserLocation() {
         if (!navigator.geolocation) {
-            text.textContent = 'Geolocation not supported.';
+            showError('Geolocation is not supported by this browser.');
             return;
         }
-        navigator.geolocation.getCurrentPosition((pos) => {
-            const { latitude, longitude } = pos.coords;
-            text.textContent = `Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)}`;
-            if (list) {
-                list.innerHTML = '<li>Betla National Park (approx)</li><li>Hundru Falls (approx)</li><li>Local Market (approx)</li>';
+        
+        getLocationBtn.disabled = true;
+        getLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Getting Location...';
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude, accuracy } = position.coords;
+                updateUserLocation(latitude, longitude, accuracy);
+                map.setView([latitude, longitude], 15);
+                updateNearbyPlaces(latitude, longitude);
+                
+                getLocationBtn.disabled = false;
+                getLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i> Get My Location';
+            },
+            (error) => {
+                handleLocationError(error);
+                getLocationBtn.disabled = false;
+                getLocationBtn.innerHTML = '<i class="fas fa-location-arrow"></i> Get My Location';
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 60000
             }
-        }, (err) => {
-            text.textContent = 'Permission denied or unavailable.';
+        );
+    }
+    
+    // Start live location tracking
+    function startLocationTracking() {
+        if (!navigator.geolocation) {
+            showError('Geolocation is not supported by this browser.');
+            return;
+        }
+        
+        if (isTracking) return;
+        
+        isTracking = true;
+        trackLocationBtn.style.display = 'none';
+        stopTrackingBtn.style.display = 'flex';
+        
+        watchId = navigator.geolocation.watchPosition(
+            (position) => {
+                const { latitude, longitude, accuracy } = position.coords;
+                updateUserLocation(latitude, longitude, accuracy);
+                updateNearbyPlaces(latitude, longitude);
+            },
+            (error) => {
+                handleLocationError(error);
+                stopLocationTracking();
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 15000,
+                maximumAge: 30000
+            }
+        );
+    }
+    
+    // Stop location tracking
+    function stopLocationTracking() {
+        if (watchId !== null) {
+            navigator.geolocation.clearWatch(watchId);
+            watchId = null;
+        }
+        
+        isTracking = false;
+        trackLocationBtn.style.display = 'flex';
+        stopTrackingBtn.style.display = 'none';
+    }
+    
+    // Update user location on map
+    function updateUserLocation(lat, lng, accuracy) {
+        // Remove existing marker and circle
+        if (userMarker) {
+            map.removeLayer(userMarker);
+        }
+        if (userLocationCircle) {
+            map.removeLayer(userLocationCircle);
+        }
+        
+        // Add new marker
+        const userIcon = L.divIcon({
+            className: 'user-location-marker',
+            html: '<div style="background: #22c55e; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        
+        userMarker = L.marker([lat, lng], { icon: userIcon })
+            .addTo(map)
+            .bindPopup('📍 Your Current Location');
+        
+        // Add accuracy circle
+        userLocationCircle = L.circle([lat, lng], {
+            radius: accuracy,
+            color: '#22c55e',
+            fillColor: '#22c55e',
+            fillOpacity: 0.1,
+            weight: 2
+        }).addTo(map);
+        
+        // Update location text
+        currentLocationText.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+        accuracyValue.textContent = Math.round(accuracy);
+        accuracyElement.style.display = 'block';
+    }
+    
+    // Handle location errors
+    function handleLocationError(error) {
+        let message = 'Unable to get your location. ';
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                message += 'Location access denied by user.';
+                break;
+            case error.POSITION_UNAVAILABLE:
+                message += 'Location information unavailable.';
+                break;
+            case error.TIMEOUT:
+                message += 'Location request timed out.';
+                break;
+            default:
+                message += 'An unknown error occurred.';
+                break;
+        }
+        showError(message);
+    }
+    
+    // Show error message
+    function showError(message) {
+        currentLocationText.textContent = message;
+        accuracyElement.style.display = 'none';
+    }
+    
+    // Update nearby places
+    function updateNearbyPlaces(userLat, userLng) {
+        const nearby = jharkhandAttractions
+            .map(place => ({
+                ...place,
+                distance: calculateDistance(userLat, userLng, place.lat, place.lng)
+            }))
+            .filter(place => place.distance <= 50) // Within 50km
+            .sort((a, b) => a.distance - b.distance)
+            .slice(0, 5);
+        
+        if (nearby.length === 0) {
+            nearbyList.innerHTML = '<li><i class="fas fa-info-circle"></i> No attractions found within 50km</li>';
+            return;
+        }
+        
+        nearbyList.innerHTML = nearby
+            .map(place => `
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${place.icon} ${place.name}</span>
+                    <small style="margin-left: auto; color: #22c55e;">${place.distance.toFixed(1)}km</small>
+                </li>
+            `).join('');
+    }
+    
+    // Calculate distance between two points
+    function calculateDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371; // Earth's radius in km
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLng = (lng2 - lng1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+    
+    // Filter attractions by type
+    function filterAttractions(type) {
+        // This would typically filter markers on the map
+        // For now, we'll just update the active button state
+        document.querySelectorAll('.map-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-type="${type}"]`).classList.add('active');
+    }
+    
+    // Event listeners
+    if (getLocationBtn) {
+        getLocationBtn.addEventListener('click', getUserLocation);
+    }
+    
+    if (trackLocationBtn) {
+        trackLocationBtn.addEventListener('click', startLocationTracking);
+    }
+    
+    if (stopTrackingBtn) {
+        stopTrackingBtn.addEventListener('click', stopLocationTracking);
+    }
+    
+    // Map filter buttons
+    document.querySelectorAll('.map-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterAttractions(btn.dataset.type);
         });
     });
+    
+    // Initialize map when page loads
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMap);
+    } else {
+        initMap();
+    }
+    
+    // Global function for directions (called from popup)
+    window.getDirections = function(lat, lng) {
+        if (userMarker) {
+            const userPos = userMarker.getLatLng();
+            const url = `https://www.google.com/maps/dir/${userPos.lat},${userPos.lng}/${lat},${lng}`;
+            window.open(url, '_blank');
+        } else {
+            alert('Please get your location first to calculate directions.');
+        }
+    };
+    
 })();
 
 // Itinerary generator (mock AI)
@@ -234,6 +527,43 @@ document.querySelectorAll('.map-btn').forEach(b => {
         b.classList.add('active');
     });
 });
+
+// AI Modal functionality
+(function initAiModal() {
+    const floatingButton = document.getElementById('floatingAiButton');
+    const modalOverlay = document.getElementById('aiModalOverlay');
+    const modalClose = document.getElementById('aiModalClose');
+    
+    if (!floatingButton || !modalOverlay || !modalClose) return;
+    
+    // Open modal when floating button is clicked
+    floatingButton.addEventListener('click', () => {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+    
+    // Close modal when close button is clicked
+    modalClose.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+    
+    // Close modal when clicking outside the modal content
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+})();
 
 // Mobile menu toggle
 (function initMobileMenu() {

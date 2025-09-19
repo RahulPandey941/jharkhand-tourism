@@ -11,6 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body>
@@ -130,6 +132,79 @@
             </div>
         </div>
     </section>
+
+
+     <!-- Final CTA -->
+     <section class="sustainable-tourism-section" id="sustainable-tourism">
+        <div class="overlay">
+            <div class="container">
+                <h2>Join us in making tourism in Jharkhand inclusive & sustainable.</h2>
+                <div class="cta-buttons" style="margin-top:1rem;">
+                    <a href="#destinations" class="btn primary">Explore Now</a>
+                    <a href="#marketplace" class="btn secondary">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Interactive Maps Section -->
+    <section class="maps-section" id="maps">
+        <div class="overlay">
+            <div class="container">
+                <h2>Interactive Maps & Navigation</h2>
+                <p class="section-subtitle">Explore Jharkhand with real-time location services and detailed maps</p>
+                <div class="maps-container">
+                    <div class="map-controls">
+                        <button class="map-btn active" data-type="attractions"><i class="fas fa-map-marker-alt"></i>
+                            Attractions</button>
+                        <button class="map-btn" data-type="transport"><i class="fas fa-bus"></i> Transport</button>
+                        <button class="map-btn" data-type="accommodations"><i class="fas fa-bed"></i> Stays</button>
+                        <button class="map-btn" data-type="restaurants"><i class="fas fa-utensils"></i> Food</button>
+                    </div>
+                    <div class="map-display">
+                        <div id="map" class="interactive-map"></div>
+                        <div class="map-loading" id="mapLoading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading map...</p>
+                        </div>
+                    </div>
+                    <div class="map-controls-panel">
+                        <div class="location-controls">
+                            <button class="location-btn" id="getLocation">
+                                <i class="fas fa-location-arrow"></i> Get My Location
+                            </button>
+                            <button class="location-btn" id="trackLocation">
+                                <i class="fas fa-crosshairs"></i> Track Live Location
+                            </button>
+                            <button class="location-btn secondary" id="stopTracking" style="display: none;">
+                                <i class="fas fa-stop"></i> Stop Tracking
+                            </button>
+                        </div>
+                        <div class="location-info" id="locationInfo">
+                            <h4>Your Location</h4>
+                            <p id="currentLocation">Click "Get My Location" to start</p>
+                            <div class="location-accuracy" id="locationAccuracy" style="display: none;">
+                                <small>Accuracy: <span id="accuracyValue">-</span> meters</small>
+                            </div>
+                        </div>
+                        <div class="nearby-places">
+                            <h5>Nearby Jharkhand Attractions</h5>
+                            <ul id="nearbyList">
+                                <li>Enable location to see nearby places</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 
 
     <!-- Featured Content Section with Carousel Cards -->
@@ -442,58 +517,6 @@
 
 
 
-    <!-- Features Grid -->
-    <section class="featured-section" id="features">
-        <div class="overlay">
-            <div class="container">
-                <h2>What You Get</h2>
-                <div class="featured-grid">
-                    <div class="featured-item">
-                        <div class="featured-content">
-                            <span class="icon"><i class="fas fa-map"></i></span>
-                            <h3>Destinations</h3>
-                            <p>Verified info on sights, trails, heritage and more.</p>
-                            <a class="btn secondary" href="#destinations">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="featured-content">
-                            <span class="icon"><i class="fas fa-person-hiking"></i></span>
-                            <h3>Guides</h3>
-                            <p>Discover trained local guides with verification.</p>
-                            <a class="btn secondary" href="#chatbot">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="featured-content">
-                            <span class="icon"><i class="fas fa-store"></i></span>
-                            <h3>Local Artisans</h3>
-                            <p>Shop handicrafts right from artisan communities.</p>
-                            <a class="btn secondary" href="#marketplace">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="featured-content">
-                            <span class="icon"><i class="fas fa-calendar-check"></i></span>
-                            <h3>Booking & Planning</h3>
-                            <p>Smart itinerary planning with local options.</p>
-                            <a class="btn secondary" href="#itinerary">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="featured-item">
-                        <div class="featured-content">
-                            <span class="icon"><i class="fas fa-drum"></i></span>
-                            <h3>Cultural Events</h3>
-                            <p>Stay updated with festivals, fairs and performances.</p>
-                            <a class="btn secondary" href="#virtual-tours">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
 
 
 
@@ -550,18 +573,7 @@
 
 
 
-    <!-- Final CTA -->
-    <section class="sustainable-tourism-section" id="sustainable-tourism">
-        <div class="overlay">
-            <div class="container">
-                <h2>Join us in making tourism in Jharkhand inclusive & sustainable.</h2>
-                <div class="cta-buttons" style="margin-top:1rem;">
-                    <a href="#destinations" class="btn primary">Explore Now</a>
-                    <a href="#marketplace" class="btn secondary">Partner With Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
 
 
@@ -571,54 +583,26 @@
 
 
 
-    <!-- Interactive Maps Section -->
-    <section class="maps-section" id="maps">
-        <div class="overlay">
-            <div class="container">
-                <h2>Interactive Maps & Navigation</h2>
-                <p class="section-subtitle">Explore Jharkhand with real-time location services and detailed maps</p>
-                <div class="maps-container">
-                    <div class="map-controls">
-                        <button class="map-btn active" data-type="attractions"><i class="fas fa-map-marker-alt"></i>
-                            Attractions</button>
-                        <button class="map-btn" data-type="transport"><i class="fas fa-bus"></i> Transport</button>
-                        <button class="map-btn" data-type="accommodations"><i class="fas fa-bed"></i> Stays</button>
-                        <button class="map-btn" data-type="restaurants"><i class="fas fa-utensils"></i> Food</button>
-                    </div>
-                    <div class="map-display">
-                        <div class="map-placeholder">
-                            <i class="fas fa-map"></i>
-                            <h3>Interactive Map</h3>
-                            <p>Real-time location tracking and navigation</p>
-                            <button class="location-btn" id="getLocation"><i class="fas fa-location-arrow"></i> Get My
-                                Location</button>
-                        </div>
-                    </div>
-                    <div class="location-info" id="locationInfo">
-                        <h4>Your Location</h4>
-                        <p id="currentLocation">Location not available</p>
-                        <div class="nearby-places">
-                            <h5>Nearby Places</h5>
-                            <ul id="nearbyList">
-                                <li>Loading nearby attractions...</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
 
+    <!-- Floating AI Assistant Button -->
+    <div class="floating-ai-button" id="floatingAiButton">
+        <i class="fas fa-robot"></i>
+        <span class="button-text">AI Assistant</span>
+    </div>
 
-    <!-- AI Chatbot Section -->
-    <section class="chatbot-section" id="chatbot">
-        <div class="overlay">
-            <div class="container">
+    <!-- AI Travel Assistant Modal -->
+    <div class="ai-modal-overlay" id="aiModalOverlay">
+        <div class="ai-modal">
+            <div class="ai-modal-header">
                 <h2>AI Travel Assistant</h2>
-                <p class="section-subtitle">Get personalized recommendations and instant answers in multiple languages
-                </p>
+                <button class="ai-modal-close" id="aiModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-modal-content">
+                <p class="section-subtitle">Get personalized recommendations and instant answers in multiple languages</p>
                 <div class="chatbot-container">
                     <div class="chatbot-window">
                         <div class="chatbot-header">
@@ -662,9 +646,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
+    </div>
 
     <!-- Analytics Dashboard (for officials) -->
     <section class="analytics-section" id="analytics">
@@ -811,6 +793,8 @@
         </div>
     </footer>
 
+    <!-- Leaflet JavaScript for maps -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 
 </body>
