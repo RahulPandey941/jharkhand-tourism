@@ -8,7 +8,7 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #fcfcfc;
     overflow-x: hidden;
 }
 
@@ -17,7 +17,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(129, 118, 118, 0.9);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 0.5rem 0;
@@ -39,6 +39,10 @@ body {
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
 }
 
 .nav-logo a:hover {
@@ -61,6 +65,9 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -134,35 +141,35 @@ body {
 
 /* Hero background - replace with an actual image/video */
 .slide:nth-child(1) {
-    background: url("https://lh3.googleusercontent.com/gps-cs-s/AC9h4noxE03Ysicyxub2Ovr9bSlun6QFnGmiqek2WzPRMHM5UXdozihGaNE_vskAo65xpjWm5DznSe47CSyopi4gxKcCX1RSmquSUGklHNAnWZGVuLehJzpRMRCLrISXLSTVZFJYo8A=k-no-"), linear-gradient(#0b0c0c, #0b0c0c);
+    background: url("https://baidhyanath.org/try1.webp"), linear-gradient(#0b0c0c, #0b0c0c);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .slide:nth-child(2) {
-    background: url("https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqE-Ns_xgxoX_JNEWcoG0CCskoElkMTE92LqZbJQs7c-fZ54Bfxh4kZ9XYzSFCLc2kCrNoeBIcxlvu5P4O57u1xVZk73x4GWMiON3n6BUrsfaOvJYRRu7F9wQGKy5pd1okuGN84=k-no-");
+    background: url("https://mapacademy.io/wp-content/uploads/2025/07/sohrai-painting-8L.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .slide:nth-child(3) {
-    background: url("https://lh3.googleusercontent.com/gps-cs-s/AC9h4npYdoHJdkgMKeswu6dPmuy5e266Z4HQcuBIdu8UdKzCuva_GaEGO8iiiEGvDaqFfLnstjnGevkn48ocNU8W-Il_QlRJ03iHP1jp9k8FLkMxgfQ2R20ExCnuo4k3gNpC-YENiNW0gw=k-no-");
+    background: url("https://i0.wp.com/avenuemail.in/wp-content/uploads/2024/03/Vande_Bharat.webp?fit=1600%2C900&ssl=1");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .slide:nth-child(4) {
-    background: url("https://static.sociofyme.com/thumb/107214709/107214709.jpg?imgsize=70660&width=420&height=746&resizemode=76");
+    background: url("https://media.assettype.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Farticleimages%2F2022%2F07%2F25%2Fsanthal-tribe-1129883-1658743174.jpg?w=undefined&auto=format%2Ccompress&fit=max");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .slide:nth-child(5) {
-    background: url("https://www.godigit.com/content/dam/godigit/directportal/en/contenthm/ranchi.jpg");
+    background: url("https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/01/08/2f3f282a9bfcef08e3e93630853f7173_1000x1000.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -286,10 +293,9 @@ body {
 }
 
 .project-about-section h2 {
-    font-size: 1.7rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
     font-weight: 600;
-    color: #ffffff;
+    color: black;
 }
 
 .project-about-section p {
@@ -323,7 +329,7 @@ body {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     font-weight: 600;
-    color: #ffffff;
+    color: black;
 }
 
 .featured-grid {
@@ -673,8 +679,6 @@ body {
 
 
 
-
-
 .sustainable-tourism-section {
     background: linear-gradient(#1f2121);
     background-size: cover;
@@ -693,7 +697,7 @@ body {
 }
 
 .sustainable-tourism-section h2 {
-    font-size: 1.7rem;
+    font-size: 2.3rem;
     margin-bottom: 1rem;
     font-weight: 600;
     color: #ffffff;
@@ -708,8 +712,6 @@ body {
     margin: 0 auto;
     opacity: 0.9;
 }
-
-
 
 
 
@@ -1726,7 +1728,7 @@ section .section-subtitle {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    color: #ddd;
+    color: #0c0c0c;
 }
 
 .form-group select {
@@ -2031,4 +2033,1146 @@ section .section-subtitle {
     padding: 1rem;
     color: #ccc;
     text-align: center;
+}
+
+/* =============================
+   Light Theme Overrides (cascade-only)
+   ============================= */
+:root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-muted: #f3f4f6;
+    --text: #0f172a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #22c55e;
+    --accent-dark: #16a34a;
+}
+
+/* Base */
+body {
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.nav-logo a,
+.nav-link {
+    color: var(--text);
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        background: rgba(255, 255, 255, 0.98);
+    }
+}
+
+/* Hero/Slides */
+.slide-content {
+    color: var(--text);
+    text-shadow: none;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide-content { z-index: 2; }
+
+.dot {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dot.active,
+.dot:hover {
+    background: var(--accent);
+}
+
+/* Sections (light surfaces) */
+.project-about-section,
+.featured-section,
+.homestay-section,
+.marketplace-section,
+.ar-vr-section,
+.testimonials-section,
+.sustainable-tourism-section,
+.maps-section,
+.itinerary-section,
+.analytics-section {
+    background: linear-gradient(180deg, var(--surface), var(--bg));
+}
+
+.section-subtitle,
+.project-about-section p,
+.featured-content p,
+.card-content p,
+.maps-content p,
+.footer-section p {
+    color: var(--muted);
+}
+
+/* Cards & surfaces */
+.destination-card,
+.Homestay-card,
+.testimonials-card,
+.product-card,
+.metric-card,
+.itinerary-result,
+.itinerary-item,
+.featured-item,
+.chatbot-window,
+.map-controls,
+.map-wrapper,
+.chart-container {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text);
+}
+
+.featured-item.large {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(16, 185, 129, 0.12)) !important;
+}
+
+.card-content h3,
+.featured-content h3,
+.maps-section h2,
+.homestay-section h2,
+.marketplace-section h2,
+.ar-vr-section h2,
+.testimonials-section h2,
+.sustainable-tourism-section h2 {
+    color: var(--text);
+}
+
+/* Buttons */
+.btn.primary:hover {
+    background: var(--surface-muted);
+}
+
+.btn.secondary {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+.btn.secondary:hover {
+    background: var(--text);
+    color: #fff;
+}
+
+.explore-btn,
+.buy-btn,
+.generate-itinerary-btn,
+.vr-btn,
+.location-btn.primary,
+.map-btn.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.explore-btn:hover { background: var(--accent-dark); }
+
+.location-btn.secondary { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.location-btn.danger { background: linear-gradient(135deg, #f87171, #ef4444); }
+
+/* Chatbot */
+.chatbot-section {
+    background: linear-gradient(180deg, var(--surface), var(--bg));
+}
+
+.message-content {
+    background: var(--surface-muted);
+    color: var(--text);
+}
+
+.user-message .message-content {
+    background: var(--accent);
+    color: #fff;
+}
+
+.chatbot-input input {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.quick-btn,
+.category-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.category-btn.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Modal */
+.ai-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.ai-modal-header {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.ai-modal-close {
+    background: var(--surface-muted);
+    color: var(--text);
+}
+
+/* Footer */
+.footer {
+    background: #f3f4f6;
+    color: var(--text);
+}
+
+.footer-section h3 { color: var(--accent); }
+
+.footer-section a { color: #374151; }
+.footer-section a:hover { color: var(--accent); }
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+}
+
+/* Misc */
+.location-info,
+.nearby-places {
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.location-coordinates { color: var(--accent); }
+
+/* Light theme itinerary readability tweaks */
+.itinerary-section .section-subtitle {
+    color: var(--text);
+}
+
+.itinerary-section .form-group {
+    color: var(--text);
+}
+
+.itinerary-section .form-group select {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Destination card image backgrounds (override gradients with images) */
+:root {
+    --card1-image: url("https://media.assettype.com/outlookindia/import/uploadimage/library/16_9/16_9_5/IMAGE_1650540364.webp?w=640&h=360&fit=crop&crop=smart");
+    --card2-image: url("https://media-cdn.tripadvisor.com/media/photo-s/0e/5e/c0/46/drone-shot-of-the-valley.jpg");
+    --card3-image: url("https://d3sftlgbtusmnv.cloudfront.net/blog/wp-content/uploads/2024/09/Betla-National-Park-Cover-Photo-840x425.jpg");
+    --card4-image: url("https://static.wixstatic.com/media/6642a4_f29facde8c81401ba50f48068e3eb453~mv2.jpg/v1/fill/w_568,h_426,al_c,lg_1,q_80,enc_avif,quality_auto/6642a4_f29facde8c81401ba50f48068e3eb453~mv2.jpg");
+    --card5-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/6c/f6/c8/parasnath-hills.jpg?w=1200&h=-1&s=1");
+    --card6-image: url("https://eastindiatour.com/wp-content/uploads/elementor/thumbs/Ghatsilla-qbkl5ufhepfr759b1n5g2g9kci0tpbkpaz89xmamq0.jpg");
+}
+
+.destination-card .card-image {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.destination-card:nth-child(1) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card1-image) !important;
+}
+
+.destination-card:nth-child(2) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card2-image) !important;
+}
+
+.destination-card:nth-child(3) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card3-image) !important;
+}
+
+.destination-card:nth-child(4) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card4-image) !important;
+}
+
+.destination-card:nth-child(5) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card5-image) !important;
+}
+
+.destination-card:nth-child(6) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card6-image) !important;
+}
+
+/* Homestay card image backgrounds */
+:root {
+    --home1-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/cf/3a/fb/hotel-prabhat-vihar.jpg?w=1200&h=-1&s=1");
+    --home2-image: url("https://media-cdn.tripadvisor.com/media/photo-s/2f/67/47/2e/caption.jpg");
+    --home3-image: url("https://media-cdn.tripadvisor.com/media/photo-s/12/b6/7f/24/getlstd-property-photo.jpg");
+    --home4-image: url("https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202207131732126591-5c1cb91e-272f-4d4c-940e-2d91b628d826.jpg");
+    --home5-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/27/35/b5/vrindavan-palace-hotel.jpg?w=1200&h=-1&s=1");
+    --home6-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/b2/92/30/caption.jpg?w=900&h=-1&s=1");
+}
+
+.Homestay-card .card-image {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.Homestay-card:nth-child(1) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home1-image) !important;
+}
+
+.Homestay-card:nth-child(2) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home2-image) !important;
+}
+
+.Homestay-card:nth-child(3) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home3-image) !important;
+}
+
+.Homestay-card:nth-child(4) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home4-image) !important;
+}
+
+.Homestay-card:nth-child(5) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home5-image) !important;
+}
+
+.Homestay-card:nth-child(6) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home6-image) !important;
+}
+
+/* Align Explore buttons across Featured and Homestay cards */
+.destination-card,
+.Homestay-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.destination-card .card-content,
+.Homestay-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.destination-card .explore-btn,
+.Homestay-card .explore-btn {
+    margin-top: auto;
+}
+
+/* Align best-time text above the Explore button consistently */
+.destination-card .best-time,
+.Homestay-card .best-time {
+    margin-top: auto !important;
+}
+
+/* Marketplace readability tweaks: make product titles and artist lines dark */
+.marketplace-section .product-info,
+.marketplace-section .product-info h3,
+.marketplace-section .product-info .artist {
+    color: var(--text);
+}
+
+/* Marketplace product image backgrounds */
+:root {
+    /* Textiles */
+    --market1-image: url("https://m.media-amazon.com/images/I/61uE4xUCnZL._UY1100_.jpg");
+    --market2-image: url("https://johargram.co.in/cdn/shop/files/2_34ca97a7-8ec8-401b-b6bf-7c65a9c01d14.jpg?v=1702125406&width=1445");
+    --market3-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZtdKAEM3c_371hz-X1Vlea02Nty-OGygakg&s");
+    /* Jewelry */
+    --market4-image: url("https://m.media-amazon.com/images/I/61wknVLOkWS._UY300_.jpg");
+    --market5-image: url("https://5.imimg.com/data5/MT/DV/MY-42538253/dokra-earrings-500x500.jpg");
+    --market6-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQloCk4aMXfDEoMD_TLaUT7MiEo46l15at42w&s");
+    /* Art & Paintings */
+    --market7-image: url("https://static.wixstatic.com/media/9dd462_a6d222c0c7b840b1a0103b482fd582e0~mv2.jpg/v1/fill/w_480,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9dd462_a6d222c0c7b840b1a0103b482fd582e0~mv2.jpg");
+    --market8-image: url("https://static.wixstatic.com/media/9dd462_ca89a674969a4a9989118152a83047b1~mv2.jpg/v1/fill/w_980,h_726,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/9dd462_ca89a674969a4a9989118152a83047b1~mv2.jpg");
+    --market9-image: url("https://i.pinimg.com/originals/4d/18/1c/4d181c1447a6db43645cb71dc60b9b25.jpg");
+}
+
+.marketplace-grid .product-card .product-image {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.marketplace-grid .product-card:nth-child(1) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market1-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(2) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market2-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(3) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market3-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(4) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market4-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(5) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market5-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(6) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market6-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(7) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market7-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(8) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market8-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(9) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market9-image) !important;
+}
+
+/* Handicrafts 3 cards appended after first 9 */
+:root {
+    --market10-image: url("https://www.maljiarts.in/cdn/shop/files/IMG_53672.heic?v=1749040696&width=1946"); /* Wooden sculpture */
+    --market11-image: url("https://media.istockphoto.com/id/1201679843/photo/handmade-bamboo-baskets-for-sale.jpg?s=612x612&w=0&k=20&c=q11FDPCLUv4iXfxE_vAShs4eb-PWSS5nk3TQndkMivc="); /* Bamboo basket */
+    --market12-image: url("https://housenama.com/cdn/shop/articles/the-art-of-dhokra-handmadeinindia-housenama.jpg?v=1720862777"); /* Dokra figurine */
+}
+
+.marketplace-grid .product-card:nth-child(10) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market10-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(11) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market11-image) !important;
+}
+
+.marketplace-grid .product-card:nth-child(12) .product-image {
+    background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market12-image) !important;
+}
+
+
+/* Project About Section: ensure mission paragraph text is dark */
+.project-about-section p {
+    color: #111;
+}
+
+/* Ensure dark subtitles for specific sections */
+.maps-section .section-subtitle,
+.homestay-section .section-subtitle,
+.marketplace-section .section-subtitle {
+    color: #111;
+}
+
+/* Defer heavy background images below the fold to speed up hero slideshow */
+.destination-card .card-image,
+.Homestay-card .card-image,
+.marketplace-grid .product-card .product-image {
+    background-image: none !important;
+}
+
+/* Re-apply backgrounds once page fully loads */
+body.images-ready .destination-card:nth-child(1) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card1-image) !important;
+}
+body.images-ready .destination-card:nth-child(2) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card2-image) !important;
+}
+body.images-ready .destination-card:nth-child(3) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card3-image) !important;
+}
+body.images-ready .destination-card:nth-child(4) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card4-image) !important;
+}
+body.images-ready .destination-card:nth-child(5) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card5-image) !important;
+}
+body.images-ready .destination-card:nth-child(6) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--card6-image) !important;
+}
+
+body.images-ready .Homestay-card:nth-child(1) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home1-image) !important;
+}
+body.images-ready .Homestay-card:nth-child(2) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home2-image) !important;
+}
+body.images-ready .Homestay-card:nth-child(3) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home3-image) !important;
+}
+body.images-ready .Homestay-card:nth-child(4) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home4-image) !important;
+}
+body.images-ready .Homestay-card:nth-child(5) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home5-image) !important;
+}
+body.images-ready .Homestay-card:nth-child(6) .card-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), var(--home6-image) !important;
+}
+
+body.images-ready .marketplace-grid .product-card:nth-child(1) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market1-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(2) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market2-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(3) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market3-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(4) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market4-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(5) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market5-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(6) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market6-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(7) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market7-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(8) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market8-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(9) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market9-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(10) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market10-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(11) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market11-image) !important; }
+body.images-ready .marketplace-grid .product-card:nth-child(12) .product-image { background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), var(--market12-image) !important; }
+
+/* Itinerary Section */
+.itinerary-section {
+    background: #ffffff;
+    padding: 4rem 0;
+    position: relative;
+}
+
+.itinerary-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.itinerary-header h2 {
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.itinerary-header .section-subtitle {
+    color: #6b7280;
+}
+
+.ai-icon {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.ai-icon i {
+    font-size: 3rem;
+    color: #22c55e;
+    animation: float 3s ease-in-out infinite;
+}
+
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: 2px solid #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.ai-features {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.feature-tag {
+    background: rgba(229, 241, 233, 0.911);
+    color: #22c55e;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.itinerary-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    color: #0f172a;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group label i {
+    color: #22c55e;
+    font-size: 1.1rem;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #22c55e;
+    pointer-events: none;
+}
+
+.form-group select {
+    background: #ffffff;
+    color: #0f172a;
+    border: 2px solid #e5e7eb;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 100%;
+    appearance: none;
+    transition: all 0.3s ease;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.radio-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-option:hover {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+    transform: translateY(-2px);
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+    opacity: 1;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.radio-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.radio-content i {
+    color: #22c55e;
+    font-size: 1.2rem;
+}
+
+.radio-content span {
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.group-size-input {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    color: #0f172a;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.group-size-input:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox-option:hover {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+    transform: translateY(-2px);
+}
+
+.checkbox-option input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-custom {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-custom::after {
+    opacity: 1;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-custom::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.checkbox-option i {
+    color: #22c55e;
+    font-size: 1.2rem;
+}
+
+.checkbox-option span {
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.generate-itinerary-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    justify-self: center;
+    grid-column: 1 / -1;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+    margin-top: 1rem;
+}
+
+.generate-itinerary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(34, 197, 94, 0.4);
+}
+
+.generate-itinerary-btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.generate-itinerary-btn:hover .btn-shine {
+    left: 100%;
+}
+
+.btn-loading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* AI Modal Styles */
+.ai-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.ai-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ai-modal {
+    background: #ffffff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.ai-modal-overlay.active .ai-modal {
+    transform: scale(1);
+}
+
+.ai-modal-header {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ai-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ai-modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.ai-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.ai-modal-content {
+    padding: 2rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+}
+
+.message:last-child {
+    margin-bottom: 0;
+}
+
+.ai-message {
+    background: #e8f5e8;
+    border-left: 4px solid #22c55e;
+}
+
+.user-message {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    margin-left: 2rem;
+}
+
+.message-content {
+    color: #0f172a;
+    line-height: 1.5;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#chatInput {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#chatInput:focus {
+    border-color: #22c55e;
+}
+
+#sendBtn {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#sendBtn:hover {
+    background: #16a34a;
+}
+
+.quick-questions h4 {
+    margin: 0 0 1rem 0;
+    color: #0f172a;
+    font-size: 1rem;
+}
+
+.quick-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.quick-btn {
+    background: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.quick-btn:hover {
+    background: #22c55e;
+    color: white;
+    border-color: #22c55e;
+}
+
+/* Floating AI Button */
+.floating-ai-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.floating-ai-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(34, 197, 94, 0.6);
+    width: 180px;
+    border-radius: 30px;
+}
+
+.floating-ai-button i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.floating-ai-button i::before {
+    content: '🤖';
+    font-size: 1.2rem;
+}
+
+.floating-ai-button .button-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.floating-ai-button:hover .button-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.floating-ai-button:hover i {
+    transform: translateX(-5px);
+}
+
+/* Responsive design for AI modal */
+@media screen and (max-width: 768px) {
+    .ai-modal {
+        width: 95%;
+        max-height: 95vh;
+        margin: 10px;
+    }
+    
+    .ai-modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .ai-modal-content {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ai-modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .ai-modal-content {
+        padding: 1rem;
+    }
 }

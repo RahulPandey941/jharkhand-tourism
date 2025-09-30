@@ -13,6 +13,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Leaflet CSS for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Hint browser to prioritize first hero image -->
+    <link rel="preload" as="image" href="https://baidhyanath.org/try1.webp" fetchpriority="high" />
+
+    <!-- Preconnect to slideshow image origins -->
+    <link rel="preconnect" href="https://baidhyanath.org" crossorigin>
+    <link rel="preconnect" href="https://mapacademy.io" crossorigin>
+    <link rel="preconnect" href="https://i0.wp.com" crossorigin>
+    <link rel="preconnect" href="https://media.assettype.com" crossorigin>
+    <link rel="preconnect" href="https://travelsetu.com" crossorigin>
+
+    <!-- Preload slideshow images for instant display -->
+    <link rel="preload" as="image" href="https://baidhyanath.org/try1.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="https://mapacademy.io/wp-content/uploads/2025/07/sohrai-painting-8L.jpg">
+    <link rel="preload" as="image" href="https://i0.wp.com/avenuemail.in/wp-content/uploads/2024/03/Vande_Bharat.webp?fit=1600%2C900&ssl=1">
+    <link rel="preload" as="image" href="https://media.assettype.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Farticleimages%2F2022%2F07%2F25%2Fsanthal-tribe-1129883-1658743174.jpg?w=undefined&auto=format%2Ccompress&fit=max">
+    <link rel="preload" as="image" href="https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/01/08/2f3f282a9bfcef08e3e93630853f7173_1000x1000.jpg">
 </head>
 
 <body>
@@ -31,7 +47,8 @@
                 <li class="nav-item"><a href="#virtual-tours" class="nav-link">Virtual Tours</a></li>
                 <li class="nav-item"><a href="#marketplace" class="nav-link">Marketplace</a></li>
                 <li class="nav-item"><a href="#homestays" class="nav-link">Homestays</a></li>
-                <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="history.html" class="nav-link">History & Culture</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
                 <li class="nav-item"><a href="#itinerary" class="nav-link">Plan Trip</a></li>
             </ul>
 
@@ -155,7 +172,7 @@
     <section class="maps-section" id="maps">
         <div class="overlay">
             <div class="container">
-                <h2>Interactive Maps & Navigation</h2>
+                <h2>Maps & Navigation</h2>
                 <p class="section-subtitle">Explore Jharkhand with real-time location services and detailed maps</p>
                 <div class="maps-container">
                     <div class="map-controls">
@@ -220,7 +237,7 @@
                     <div class="cards-wrapper" id="hello">
                         <div class="cards-container" id="cardsContainer">
                             <!-- Card 1 -->
-                            <div class="destination-card">
+                            <div class="destination-card" data-slug="netarhat">
                                 <div class="card-image">
                                     <span class="card-tag">Hill Station</span>
                                 </div>
@@ -234,7 +251,7 @@
                             </div>
 
                             <!-- Card 2 -->
-                            <div class="destination-card">
+                            <div class="destination-card" data-slug="patratu-valley">
                                 <div class="card-image">
                                     <span class="card-tag">Scenic Drive</span>
                                 </div>
@@ -248,57 +265,58 @@
                             </div>
 
                             <!-- Card 3 -->
-                            <div class="destination-card">
+                            <div class="destination-card" data-slug="betla-national-park">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">National Park </span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
-                                    <p class="best-time">Best: August to February</p>
+                                    <h3>- Betla National Park
+                                    </h3>
+                                    <p>"Explore the wild heart of Jharkhand—Betla National Park, where nature roars and history whispers."</p>
+                                    <p class="best-time">Best: October to March</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
                             </div>
 
                             <!-- Card 4 -->
-                            <div class="destination-card">
+                            <div class="destination-card" data-slug="baba-baidyanath-temple">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">Religious Site</span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
-                                    <p class="best-time">Best: August to February</p>
+                                    <h3>Baba Baidyanath Temple</h3>
+                                    <p>"Seek divine healing at Baba Baidyanath Dham—where faith meets the eternal flame of Shiva.</p>
+                                    <p class="best-time">Best: - October to March
+                                    </p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
                             </div>
 
                             <!-- Card 5 -->
-                            <div class="destination-card">
+                            <div class="destination-card" data-slug="shikharji-parasnath-hills">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">Spiritual Site</span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
-                                    <p class="best-time">Best: August to February</p>
+                                    <h3>Shikharji (Parasnath Hills)</h3>
+                                    <p>"Ascend to serenity—Shikharji, where every step echoes the path to liberation."</p>
+                                    <p class="best-time">Best: - During Jain festivals
+                                    </p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
                             </div>
 
                             <!-- Card 6 -->
-                            <div class="destination-card">
+                            <div class="destination-card" data-slug="ghatshila">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">Historical Gem</span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
-                                    <p class="best-time">Best: August to February</p>
+                                    <h3>Ghatshila
+                                    </h3>
+                                    <p>"Ghatshila—where golden rivers meet timeless tranquility."</p>
+                                    <p class="best-time">Best: - Monsoon (July to September)
+                                    </p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
                             </div>
@@ -335,7 +353,7 @@
                             <!-- Card 1 -->
                             <div class="Homestay-card">
                                 <div class="card-image">
-                                    <span class="card-tag">Shivashray Homestay</span>
+                                    <span class="card-tag">Prabhat Vihar Hotel</span>
                                 </div>
                                 <div class="card-content">
                                     <h3>Netarhat</h3>
@@ -349,12 +367,11 @@
                             <!-- Card 2 -->
                             <div class="Homestay-card">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">Courtyard by Marriott Ranchi</span>
                                 </div>
                                 <div class="card-content">
                                     <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
+                                    <p>Patratu Valley—where winding roads lead to nature’s embrace."</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -363,12 +380,11 @@
                             <!-- Card 3 -->
                             <div class="Homestay-card">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">Hotel Shivaay Blue</span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
+                                    <h3>  Betla National Park</h3>
+                                    <p>Explore the wild heart of Jharkhand—Betla National Park, where nature roars and history whispers."</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -377,12 +393,11 @@
                             <!-- Card 4 -->
                             <div class="Homestay-card">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">- Hotel Ekta International </span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
+                                    <h3>Baba Baidyanath Temple</h3>
+                                    <p> "Seek divine healing at Baba Baidyanath Dham—where faith meets the eternal flame of Shiva."</p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -391,12 +406,11 @@
                             <!-- Card 5 -->
                             <div class="Homestay-card">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">- The Orbit Retreat, Giridih</span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
+                                    <h3>Shikharji (Parasnath Hills)</h3>
+                                    <p>"Ascend to serenity—Shikharji, where every step echoes the path to liberation." </p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -405,12 +419,11 @@
                             <!-- Card 6 -->
                             <div class="Homestay-card">
                                 <div class="card-image">
-                                    <span class="card-tag">Scenic Drive</span>
+                                    <span class="card-tag">- Buru Resort</span>
                                 </div>
                                 <div class="card-content">
-                                    <h3>Patratu Valley</h3>
-                                    <p>Serpentine roads wind through lush hills offering breathtaking valley views and
-                                        peaceful lake vistas.</p>
+                                    <h3>Ghatshila</h3>
+                                    <p>Ghatshila—where golden rivers meet timeless tranquility."<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></p>
                                     <p class="best-time">Best: August to February</p>
                                     <button class="explore-btn">Explore</button>
                                 </div>
@@ -438,17 +451,9 @@
                     <button class="category-btn" data-category="art">Art & Paintings</button>
                 </div>
                 <div class="marketplace-grid">
-                    <div class="product-card">
-                        <div class="product-image"><span class="product-badge">Tribal Art</span></div>
-                        <div class="product-info">
-                            <h3>Santhal Wooden Sculpture</h3>
-                            <p class="artist">By: Local Artisan</p>
-                            <p class="price">₹2,500</p>
-                            <button class="buy-btn">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image"><span class="product-badge">Handwoven</span></div>
+                    <!-- Textiles (3) -->
+                    <div class="product-card" data-category="textiles">
+                        <div class="product-image"><span class="product-badge">Textiles</span></div>
                         <div class="product-info">
                             <h3>Traditional Saree</h3>
                             <p class="artist">By: Tribal Weaver</p>
@@ -456,12 +461,108 @@
                             <button class="buy-btn">Add to Cart</button>
                         </div>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card" data-category="textiles">
+                        <div class="product-image"><span class="product-badge">Textiles</span></div>
+                        <div class="product-info">
+                            <h3>Handloom Shawl</h3>
+                            <p class="artist">By: Women Co-op</p>
+                            <p class="price">₹1,250</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="textiles">
+                        <div class="product-image"><span class="product-badge">Textiles</span></div>
+                        <div class="product-info">
+                            <h3>Tribal Weave Stole</h3>
+                            <p class="artist">By: Village Weaver</p>
+                            <p class="price">₹950</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Jewelry (3) -->
+                    <div class="product-card" data-category="jewelry">
                         <div class="product-image"><span class="product-badge">Jewelry</span></div>
                         <div class="product-info">
                             <h3>Silver Tribal Necklace</h3>
                             <p class="artist">By: Local Craftsman</p>
                             <p class="price">₹3,200</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="jewelry">
+                        <div class="product-image"><span class="product-badge">Jewelry</span></div>
+                        <div class="product-info">
+                            <h3>Dokra Brass Earrings</h3>
+                            <p class="artist">By: Dokra Artisan</p>
+                            <p class="price">₹1,100</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="jewelry">
+                        <div class="product-image"><span class="product-badge">Jewelry</span></div>
+                        <div class="product-info">
+                            <h3>Beaded Tribal Bracelet</h3>
+                            <p class="artist">By: Youth Collective</p>
+                            <p class="price">₹450</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Art & Paintings (3) -->
+                    <div class="product-card" data-category="art">
+                        <div class="product-image"><span class="product-badge">Art & Paintings</span></div>
+                        <div class="product-info">
+                            <h3>Sohrai Painting</h3>
+                            <p class="artist">By: Village Artist</p>
+                            <p class="price">₹2,000</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="art">
+                        <div class="product-image"><span class="product-badge">Art & Paintings</span></div>
+                        <div class="product-info">
+                            <h3>Paitkar Scroll</h3>
+                            <p class="artist">By: Folk Painter</p>
+                            <p class="price">₹3,500</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="art">
+                        <div class="product-image"><span class="product-badge">Art & Paintings</span></div>
+                        <div class="product-info">
+                            <h3>Tribal Wall Art Panel</h3>
+                            <p class="artist">By: Local Artisan</p>
+                            <p class="price">₹1,750</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Handicrafts (3) -->
+                    <div class="product-card" data-category="handicrafts">
+                        <div class="product-image"><span class="product-badge">Handicrafts</span></div>
+                        <div class="product-info">
+                            <h3>Santhal Wooden Sculpture</h3>
+                            <p class="artist">By: Master Artisan</p>
+                            <p class="price">₹2,500</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="handicrafts">
+                        <div class="product-image"><span class="product-badge">Handicrafts</span></div>
+                        <div class="product-info">
+                            <h3>Bamboo Craft Basket</h3>
+                            <p class="artist">By: Village Collective</p>
+                            <p class="price">₹650</p>
+                            <button class="buy-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="handicrafts">
+                        <div class="product-image"><span class="product-badge">Handicrafts</span></div>
+                        <div class="product-info">
+                            <h3>Dokra Metal Figurine</h3>
+                            <p class="artist">By: Dokra Artist</p>
+                            <p class="price">₹1,400</p>
                             <button class="buy-btn">Add to Cart</button>
                         </div>
                     </div>
@@ -484,7 +585,7 @@
                                 <i class="fas fa-vr-cardboard"></i>
                                 <h3>Netarhat Hills</h3>
                                 <p>360° Virtual Tour</p>
-                                <button class="vr-btn">Start VR Tour</button>
+                                <button class="vr-btn" data-video="https://www.youtube.com/watch?v=XtDgpuSXHDI">Start VR Tour</button>
                             </div>
                         </div>
                     </div>
@@ -494,7 +595,7 @@
                                 <i class="fas fa-vr-cardboard"></i>
                                 <h3>Betla National Park</h3>
                                 <p>Wildlife Safari VR</p>
-                                <button class="vr-btn">Start VR Tour</button>
+                                <button class="vr-btn" data-video="https://www.youtube.com/watch?v=TZ5WGl6jOnw">Start VR Tour</button>
                             </div>
                         </div>
                     </div>
@@ -504,7 +605,7 @@
                                 <i class="fas fa-vr-cardboard"></i>
                                 <h3>Hazaribagh Lake</h3>
                                 <p>Scenic Lake View</p>
-                                <button class="vr-btn">Start VR Tour</button>
+                                <button class="vr-btn" data-video="https://www.youtube.com/watch?v=K7T0xWWoD70">Start VR Tour</button>
                             </div>
                         </div>
                     </div>
@@ -710,27 +811,157 @@
     <section class="itinerary-section" id="itinerary">
         <div class="overlay">
             <div class="container">
-                <h2>AI-Powered Trip Planner</h2>
-                <p class="section-subtitle">Get personalized itineraries based on your preferences and interests</p>
+                <div class="itinerary-header">
+                    <div class="ai-icon">
+                        <i class="fas fa-robot"></i>
+                        <div class="pulse-ring"></div>
+                    </div>
+                    <h2>AI-Powered Trip Planner</h2>
+                    <p class="section-subtitle">Get personalized itineraries based on your preferences and interests</p>
+                    <div class="ai-features">
+                        <span class="feature-tag"><i class="fas fa-brain"></i> Smart Recommendations</span>
+                        <span class="feature-tag"><i class="fas fa-clock"></i> Real-time Planning</span>
+                        <span class="feature-tag"><i class="fas fa-map-marked-alt"></i> Local Insights</span>
+                    </div>
+                </div>
                 <div class="itinerary-form">
                     <div class="form-group">
-                        <label>Duration of Stay</label>
-                        <select id="duration">
-                            <option value="1">1 Day</option>
-                            <option value="2">2 Days</option>
-                            <option value="3">3 Days</option>
-                            <option value="5">5 Days</option>
-                            <option value="7">1 Week</option>
+                        <label><i class="fas fa-calendar-alt"></i> Duration of Stay</label>
+                        <div class="select-wrapper">
+                            <select id="duration">
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="7">1 Week</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-users"></i> Traveller Type</label>
+                        <div class="radio-group" id="travellerType">
+                            <label class="radio-option">
+                                <input type="radio" name="travellerType" value="solo" checked>
+                                <span class="radio-custom"></span>
+                                <div class="radio-content">
+                                    <i class="fas fa-user"></i>
+                                    <span>Solo</span>
+                                </div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="travellerType" value="duo">
+                                <span class="radio-custom"></span>
+                                <div class="radio-content">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>Duo (2)</span>
+                                </div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="travellerType" value="family">
+                                <span class="radio-custom"></span>
+                                <div class="radio-content">
+                                    <i class="fas fa-home"></i>
+                                    <span>Family (4)</span>
+                                </div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="travellerType" value="custom">
+                                <span class="radio-custom"></span>
+                                <div class="radio-content">
+                                    <i class="fas fa-cog"></i>
+                                    <span>Custom</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="group-size-input">
+                            <label><i class="fas fa-hashtag"></i> Group Size</label>
+                            <input type="number" id="groupSize" min="1" value="1" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-heart"></i> Travel Style</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" value="adventure">
+                                <span class="checkbox-custom"></span>
+                                <div class="checkbox-content">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Adventure</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" value="cultural">
+                                <span class="checkbox-custom"></span>
+                                <div class="checkbox-content">
+                                    <i class="fas fa-monument"></i>
+                                    <span>Cultural</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" value="nature">
+                                <span class="checkbox-custom"></span>
+                                <div class="checkbox-content">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>Nature</span>
+                                </div>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" value="spiritual">
+                                <span class="checkbox-custom"></span>
+                                <div class="checkbox-content">
+                                    <i class="fas fa-om"></i>
+                                    <span>Spiritual</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Location</label>
+                        <select id="startCity">
+                            <option value="Ranchi">Ranchi</option>
+                            <option value="Jamshedpur">Jamshedpur</option>
+                            <option value="Dhanbad">Dhanbad</option>
+                            <option value="Deoghar">Deoghar</option>
+                            <option value="Hazaribagh">Hazaribagh</option>
+                            <option value="Bokaro">Bokaro</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Travel Style</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" value="adventure"> Adventure</label>
-                            <label><input type="checkbox" value="cultural"> Cultural</label>
-                            <label><input type="checkbox" value="nature"> Nature</label>
-                            <label><input type="checkbox" value="spiritual"> Spiritual</label>
-                        </div>
+                        <label>Travel Month</label>
+                        <select id="travelMonth">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Pace</label>
+                        <select id="pace">
+                            <option value="relaxed">Relaxed (2 stops/day)</option>
+                            <option value="standard" selected>Standard (3 stops/day)</option>
+                            <option value="packed">Packed (4 stops/day)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Transport Preference</label>
+                        <select id="transport">
+                            <option value="public">Public/Shared</option>
+                            <option value="private" selected>Private/Taxi</option>
+                            <option value="self">Self-drive/Rental</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="accessible"> Prefer low-walk / step-free experiences</label>
                     </div>
                     <div class="form-group">
                         <label>Budget Range</label>
@@ -740,12 +971,27 @@
                             <option value="luxury">Luxury (₹3000+/day)</option>
                         </select>
                     </div>
-                    <button class="generate-itinerary-btn" id="generateItinerary"><i class="fas fa-magic"></i> Generate
-                        My Itinerary</button>
+                    <button class="generate-itinerary-btn" id="generateItinerary">
+                        <div class="btn-content">
+                            <i class="fas fa-magic"></i>
+                            <span>Generate My Itinerary</span>
+                            <div class="btn-shine"></div>
+                        </div>
+                        <div class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>AI is planning...</span>
+                        </div>
+                    </button>
                 </div>
                 <div class="itinerary-result" id="itineraryResult" style="display: none;">
                     <h3>Your Personalized Itinerary</h3>
+                    <div class="itinerary-actions" style="display:flex;gap:8px;margin:8px 0 12px;flex-wrap:wrap;">
+                        <button id="regenItinerary" class="btn secondary">Regenerate</button>
+                        <button id="copyItinerary" class="btn secondary">Copy</button>
+                        <button id="downloadItinerary" class="btn secondary">Download JSON</button>
+                    </div>
                     <div class="itinerary-timeline" id="itineraryTimeline"></div>
+                    <div class="itinerary-budget" id="itineraryBudget" style="margin-top:12px;"></div>
                 </div>
             </div>
         </div>
@@ -793,9 +1039,56 @@
         </div>
     </footer>
 
+    <!-- Floating AI Assistant Button -->
+    <button class="floating-ai-button" id="floatingAiButton" onclick="console.log('Direct click!'); document.getElementById('aiModalOverlay').classList.add('active');">
+        <i class="fas fa-robot"></i>
+        <span class="button-text">AI Assistant</span>
+    </button>
+
+    <!-- AI Modal Overlay -->
+    <div class="ai-modal-overlay" id="aiModalOverlay">
+        <div class="ai-modal">
+            <div class="ai-modal-header">
+                <h2><i class="fas fa-robot"></i> AI Travel Assistant</h2>
+                <button class="ai-modal-close" id="aiModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-modal-content">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-content">
+                                <strong>AI Assistant:</strong> Hello! I'm your AI travel assistant for Jharkhand. How can I help you plan your trip today?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Ask me about destinations, culture, food, or anything about Jharkhand...">
+                        <button id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="quick-questions">
+                        <h4>Quick Questions:</h4>
+                        <div class="quick-buttons">
+                            <button class="quick-btn" data-query="What are the best places to visit in Jharkhand?">Best Places</button>
+                            <button class="quick-btn" data-query="Tell me about Jharkhand's culture and traditions">Culture</button>
+                            <button class="quick-btn" data-query="What festivals are celebrated in Jharkhand?">Festivals</button>
+                            <button class="quick-btn" data-query="What is the local food like in Jharkhand?">Local Food</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Leaflet JavaScript for maps -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
+    <script>
+    // Minimal noop so detail.html can reuse styles if opened directly from filesystem
+    </script>
 
 </body>
 

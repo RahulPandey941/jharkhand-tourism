@@ -1,0 +1,61 @@
+/* History & Culture standalone styles */
+body { background: linear-gradient(180deg, #fff7ed 0%, #eff6ff 100%); }
+.hc-main { padding-top: 80px; }
+.hc-hero { position: relative; height: 320px; border-radius: 0; overflow: hidden; }
+.hc-hero:before { content: ""; position: absolute; inset: 0; background: url('https://banasri.in/wp-content/uploads/2024/06/Discovering-the-Hidden-Gems-of-Jharkhand.jpg') center/cover no-repeat; filter: saturate(1.15) contrast(1.05); }
+.hc-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.55)); display: grid; place-items: center; text-align: center; color: #fff; padding: 20px; }
+.hc-hero-overlay h1 { font-size: 36px; letter-spacing: 0.3px; margin: 0 0 6px 0; }
+.hc-hero-overlay p { opacity: 0.95; }
+
+.hc-section { padding: 28px 0; }
+.hc-section.alt { background: rgba(255,255,255,0.7); }
+.hc-container { width: min(1100px, 92%); margin: 0 auto; }
+.hc-container h2 { margin: 0 0 10px 0; background: linear-gradient(90deg, #f59e0b, #10b981); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+.hc-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 14px; box-shadow: 0 10px 28px rgba(99,102,241,0.08); }
+.hc-card h3 { margin: 0 0 6px 0; color: #0ea5e9; }
+.hc-card p { color: #374151; }
+
+@media (max-width: 900px) { .hc-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .hc-grid { grid-template-columns: 1fr; } }
+
+/* Image cards */
+.hc-image-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.hc-image { width: 100%; height: 180px; background-size: cover; background-position: center; }
+.cul-staples { background-image: url('https://i0.wp.com/www.desifiesta.com/wp-content/uploads/2014/04/Jharkandthali10-1-1024x768.jpg?ssl=1'); }
+.cul-wild { background-image: url('https://i.ytimg.com/vi/0vrrJIPAqSo/maxresdefault.jpg'); }
+.cul-street { background-image: url('https://tripxl.com/blog/wp-content/uploads/2024/08/Karam-festival.jpg'); }
+/* Festival images */
+.fes-sarhul { background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/27/Sarhul_in_Ranchi.jpg'); }
+.fes-karma { background-image: url('https://www.jharkhand.gov.in/images/festival/karma.jpg'); }
+.fes-sohrai { background-image: url('https://i.pinimg.com/originals/08/95/38/089538756e47605c5b6c632b13cf8dbe.jpg'); }
+.fes-tusu { background-image: url('https://utsav.gov.in/public/uploads/event_picture_image/event_686/16607352252119234166.jpg'); }
+.fes-mahavir { background-image: url('https://wanderon-images.gumlet.io/gallery/new/2025/04/04/1743766191276-mahavir-jayanti-celebrations.avif'); }
+.fes-shravani { background-image: url('https://judgementsincriminallaw.wordpress.com/wp-content/uploads/2020/07/images-33.jpeg?w=640'); }
+/* Museum images */
+.mus-state { background-image: url('https://pbs.twimg.com/media/De5zDgUVAAAyYrF.jpg'); }
+.mus-tri { background-image: url('https://live.staticflickr.com/65535/52679765126_7e06860677_b.jpg'); }
+.mus-haat { background-image: url('https://shaktivahini.org/wp-content/uploads/2014/07/Haat-3.png'); }
+.hc-image-card .hc-content { padding: 12px 12px 14px 12px; }
+.hc-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 999px; font-size: 12px; margin-bottom: 6px; }
+.hc-caption { font-size: 13px; color: #6b7280; margin-top: 4px; }
+.hc-image-card:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(16,185,129,0.18); transition: all .25s ease; }
+
+/* Alternating bands */
+.hc-section.band-1 { background: linear-gradient(180deg, #ecfeff 0%, #f0fdf4 100%); }
+.hc-section.band-2 { background: linear-gradient(180deg, #fdf4ff 0%, #fff7ed 100%); }
+
+/* Timeline */
+.hc-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+.hc-timeline .hc-card { border-left: 4px solid #34d399; }
+.hc-year { font-weight: 700; color: #10b981; }
+@media (max-width: 900px) { .hc-timeline { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .hc-timeline { grid-template-columns: 1fr; } }
+
+/* Long read paragraphs */
+.hc-lead { font-size: 17px; line-height: 1.9; color: #1f2937; }
+.hc-section p { line-height: 1.8; }
+
+/* Section separators */
+.hc-sep { height: 2px; background: linear-gradient(90deg, #34d399, #06b6d4, #818cf8); opacity: .5; margin: 18px 0; border-radius: 2px; }
+

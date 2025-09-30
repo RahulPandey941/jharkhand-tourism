@@ -1,0 +1,177 @@
+/* Detail page specific styles */
+
+/* Ensure text is visible if global theme is dark */
+#detailRoot { color: #111; }
+/* Ensure long content flows and is readable */
+.detail-section { padding: 32px 0; background: linear-gradient(180deg, #f0fdf4 0%, #ecfeff 60%, #f8fafc 100%); }
+.detail-section .container { max-width: 1100px; margin: 0 auto; }
+.detail-left p { white-space: pre-line; line-height: 1.7; }
+.section-subtitle { color: #374151; }
+
+/* Hero slideshow */
+.hero {
+    position: relative;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(6, 182, 212, 0.18);
+    margin-bottom: 18px;
+}
+.hero-slideshow { position: absolute; inset: 0; }
+.hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
+.hero-slide.active { opacity: 1; }
+.hero-slide { background-size: cover; background-position: center; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 70%); }
+.hero-content { position: absolute; left: 20px; right: 20px; bottom: 18px; color: #fff; }
+.hero-content h2 { margin: 0 0 4px 0; font-size: 28px; letter-spacing: .3px; }
+.hero-content .card-tag { background: rgba(255,255,255,0.92); color: #065f46; }
+.hero-content .section-subtitle { color: #d1fae5; text-shadow: 0 2px 16px rgba(0,0,0,0.35); }
+.hero-nav { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+.hero-btn { pointer-events: auto; background: rgba(0,0,0,0.35); color: #fff; border: 0; width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; margin: 0 10px; cursor: pointer; transition: background .2s ease; }
+.hero-btn:hover { background: rgba(0,0,0,0.5); }
+.hero-dots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; }
+.hero-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.6); cursor: pointer; }
+.hero-dot.active { background: #fff; }
+/* Per-destination CSS background images for slides */
+/* Netarhat */
+.hero-netarhat .slide-1 { background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/ce/Pine_trees_of_Netarhat_Hill_station.jpg"); }
+.hero-netarhat .slide-2 { background-image: url("https://res.cloudinary.com/kmadmin/image/upload/v1724399030/kiomoi/netarhat_jharkhand_tourism_8476.jpg"); }
+.hero-netarhat .slide-3 { background-image: url("https://www.india.com/wp-content/uploads/2022/06/Collage-Maker-15-Jun-2022-03.52-PM.jpg"); }
+
+/* Patratu Valley */
+.hero-patratu-valley .slide-1 { background-image: url("https://content3.jdmagicbox.com/comp/ranchi/i2/0651px651.x651.170315163315.q6i2/catalogue/patratu-valley-gitilgarh-ranchi-tourist-attraction-zjwkse00qm.jpg"); }
+.hero-patratu-valley .slide-2 { background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Patratu_Valley_at_night.jpg/1200px-Patratu_Valley_at_night.jpg"); }
+.hero-patratu-valley .slide-3 { background-image: url("https://media.istockphoto.com/id/1415368447/photo/patratu-valley-with-lush-greenery-and-scenic-views-of-hills-located-in-patratu-ranchi.jpg?s=612x612&w=0&k=20&c=DI61h0tsvXnbWuoeZTpMrB70ELM9iu_h2oJsRxawa4U="); }
+
+/* Betla National Park */
+.hero-betla-national-park .slide-1 { background-image: url("https://media.assettype.com/outlooktraveller/2025-08-25/s6bgbbsn/snapins-ai3641832999873957478.jpg?w=1080&auto=format%2Ccompress&fit=max"); }
+.hero-betla-national-park .slide-2 { background-image: url("https://pbs.twimg.com/media/EUb3s7iU0AA0uDA?format=jpg&name=4096x4096"); }
+.hero-betla-national-park .slide-3 { background-image: url("https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/01/08/ac7a9c0edb067df66e9891cc57693c51_1000x1000.jpg"); }
+
+/* Baba Baidyanath Temple */
+.hero-baba-baidyanath-temple .slide-1 { background-image: url("https://www.pilgrimagetour.in/blog/wp-content/uploads/2023/11/Baba-Baidyanath-Temple-Rituals.jpg"); }
+.hero-baba-baidyanath-temple .slide-2 { background-image: url("https://www.pilgrimagetour.in/blog/wp-content/uploads/2023/11/Best-Time-to-Visit-Baba-Baidyanath-Temple.jpg"); }
+.hero-baba-baidyanath-temple .slide-3 { background-image: url("https://avathioutdoors.gumlet.io/travelGuide/dev/deoghar_P9353.jpg"); }
+
+/* Shikharji */
+.hero-shikharji-parasnath-hills .slide-1 { background-image: url("https://www.studyiq.com/articles/wp-content/uploads/2025/05/19173720/Parasnath-Hill.png"); }
+.hero-shikharji-parasnath-hills .slide-2 { background-image: url("https://t3.ftcdn.net/jpg/02/86/70/92/360_F_286709271_eqrdMRV1mju29M3FhRrP2j0P5nMyLeOp.jpg"); }
+.hero-shikharji-parasnath-hills .slide-3 { background-image: url("https://www.shutterstock.com/shutterstock/videos/3530835195/thumb/1.jpg?ip=x480"); }
+
+/* Ghatshila */
+.hero-ghatshila .slide-1 { background-image: url("https://www.shutterstock.com/image-photo/beautiful-panorama-clear-blue-burudih-260nw-784238686.jpg"); }
+.hero-ghatshila .slide-2 { background-image: url("https://eastindiatour.com/wp-content/uploads/elementor/thumbs/Ghatsilla-qbkl5ufhepfr759b1n5g2g9kci0tpbkpaz89xmamq0.jpg"); }
+.hero-ghatshila .slide-3 { background-image: url("https://hblimg.mmtcdn.com/content/hubble/img/ttd_images/mmt/activities/m_Dhanbad_Ghatshila_2_l_360_640.jpg"); }
+
+.destination-header {
+    background: linear-gradient(90deg, #34d399 0%, #06b6d4 50%, #818cf8 100%);
+    border-radius: 16px;
+    padding: 20px 20px 18px 20px;
+    color: #fff;
+    box-shadow: 0 16px 40px rgba(6, 182, 212, 0.18);
+}
+.destination-header h2 { margin-bottom: 0.25rem; color: #fff; letter-spacing: 0.2px; }
+.destination-header .card-tag {
+    display: inline-block;
+    background: #ffffff;
+    color: #065f46;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-right: 8px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+    .detail-grid { grid-template-columns: 1fr; }
+}
+
+.detail-left h3 { margin-top: 1rem; position: relative; padding-left: 10px; }
+.detail-left h3:before {
+    content: "";
+    position: absolute;
+    left: 0; top: 6px; bottom: 6px; width: 4px;
+    background: linear-gradient(180deg, #22c55e, #06b6d4);
+    border-radius: 2px;
+}
+.detail-left ul { padding-left: 1.1rem; }
+.detail-left li { margin: 4px 0; }
+
+.info-card {
+    background: #ffffffcc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 12px 28px rgba(2, 132, 199, 0.08);
+}
+.info-card h4 { margin: 0 0 8px 0; color: #0ea5e9; letter-spacing: 0.3px; }
+
+.nearby-item { margin-bottom: 8px; }
+.nearby-item a { color: #0ea5e9; text-decoration: none; font-weight: 600; }
+.nearby-item a:hover { text-decoration: underline; }
+.nearby-desc { margin: 2px 0 0 0; font-size: 14px; color: #374151; }
+
+/* Map */
+.map-display { margin-top: 16px; }
+.interactive-map { height: 320px; border-radius: 14px; overflow: hidden; border: 1px solid #bae6fd; box-shadow: 0 10px 24px rgba(14, 165, 233, 0.12); }
+
+/* CTA */
+.cta-buttons { margin: 10px 0; }
+.btn.primary { background: linear-gradient(90deg, #22c55e, #06b6d4); color: #fff; border: 0; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2); }
+.btn.primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.btn.primary { transition: all .2s ease; }
+
+/* Gallery grid */
+.detail-gallery { margin-top: 16px; }
+.detail-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 900px) {
+    .detail-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+    .detail-gallery-grid { grid-template-columns: 1fr; }
+}
+
+.detail-gallery-grid img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.detail-gallery-grid img:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 10px 24px rgba(99, 102, 241, 0.18); }
+
+/* Lightbox */
+.lightbox-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 9999;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+.lightbox-overlay:after { content: '✕'; position: fixed; top: 16px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; }
+
+/* Links inside detail root */
+#detailRoot a { color: #0ea5e9; }
+#detailRoot a:hover { color: #0284c7; }
+
+/* Subtle entrance animation */
+#detailRoot > * { animation: fadeUp .35s ease both; }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+

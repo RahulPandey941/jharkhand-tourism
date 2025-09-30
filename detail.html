@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="index.html#home"><i class="fas fa-mountain"></i> Jharkhand Tourism</a></div>
+            <ul class="nav-menu">
+				<li class="nav-item"><a href="index.html#destinations" class="nav-link">Destinations</a></li>
+                <li class="nav-item"><a href="index.html#homestays" class="nav-link">Homestays</a></li>
+                <li class="nav-item"><a href="index.html#virtual-tours" class="nav-link">VR</a></li>
+				<li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="index.html#itinerary" class="nav-link">Plan Trip</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content" style="min-height: 60vh; padding-top: 80px;">
+        <section class="detail-section">
+            <div class="container" id="detailRoot">
+                <!-- Rendered by script -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jharkhand Tourism. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+    // Data schema you can fill per destination
+    // Each destination entry should follow this shape:
+    // {
+    //   title: string,
+    //   tag: string,                    // Category/label
+    //   tagline: string,                // Short hook line
+    //   description: string,            // 1-3 paragraphs
+    //   bestTime: string,               // e.g. "October to March"
+    //   highlights: string[],           // bullets
+    //   images: string[],               // image URLs (optional)
+    //   location: { lat: number, lng: number } | null,
+    //   howToReach: { byAir?: string, byRail?: string, byRoad?: string },
+    //   tips: string[],
+    //   nearby: { name: string, slug?: string, desc?: string }[],
+    //   homestays: { name: string, price?: string }[],
+    //   links: { label: string, url: string }[],
+    //   localFoodCulture?: string[],    // bullets
+    //   experienceVibe?: string        // paragraph
+    // }
+
+    const DESTINATIONS = {
+        "netarhat": {
+            title: "Netarhat",
+            tag: "Hill Station",
+            tagline: "Queen of Chotanagpur with misty sunrises",
+            description: "Netarhat, often called the Queen of Chotanagpur, is not just a hill station—it’s a living canvas of misty mornings, golden horizons, and whispering pine forests. Perched at an altitude of approximately 1,128 meters in the Latehar district of Jharkhand, this plateau town is the highest point in the Chotanagpur region and one of the most pristine destinations in Eastern India.\n\nThe name “Netarhat” is believed to derive from the words Netra (eye) and Hat (market), possibly referencing its strategic vantage point or tribal roots. But beyond etymology, Netarhat is a place where time slows down. The air is crisp, the skies are vast, and the silence is profound—broken only by the rustle of sal leaves or the distant call of a koel.\n\nUnlike commercial hill stations, Netarhat remains untouched by mass tourism. Its charm lies in its simplicity: winding roads that curve through seven hills, colonial-era buildings that whisper stories of the British Raj, and tribal villages that preserve centuries-old traditions. The town is enveloped by dense forests, making it a haven for trekkers, birdwatchers, and those seeking solitude.\n\nOne of Netarhat’s most celebrated experiences is its sunrise, best viewed from the aptly named Sunrise Point. As dawn breaks, the sun emerges like a molten disc from behind the hills, casting golden light over the valley. It’s a moment that feels spiritual—many visitors describe it as a connection to something divine. Equally enchanting is the sunset at Magnolia Point, where the sky turns into a palette of orange, pink, and violet, and the legend of a British girl named Magnolia adds a touch of melancholy romance to the view.\n\nNetarhat is also home to the prestigious Netarhat Residential School, established in 1954. This institution has shaped generations of scholars and stands as a symbol of disciplined learning amidst nature’s bounty.\n\nThe surrounding forests are rich in biodiversity, with waterfalls like Upper and Lower Ghaghri tucked away in the greenery. These spots are perfect for picnics, short hikes, and quiet reflection. The local flora includes sal, mahua, and bamboo, while fauna ranges from deer and wild boar to exotic birds and butterflies.\n\nCulturally, Netarhat offers a glimpse into tribal life. The indigenous communities here celebrate festivals like Sarhul and Karma Puja, and their music, dance, and crafts reflect a deep connection to the land. Visitors can explore local markets for handmade bamboo items, tribal jewelry, and seasonal forest produce.\n\nIn essence, Netarhat is not just a destination—it’s a mood, a memory, and a mirror to nature’s quiet grandeur. Whether you’re a solo traveler seeking introspection, a family looking for peace, or a photographer chasing light and shadow, Netarhat welcomes you with open skies and open arms.",
+            bestTime: "October to March",
+            highlights: ["Sunrise Point", "Koel View Point", "Upper/Lower Ghaghri Falls"],
+            images: [],
+            location: { lat: 23.4673, lng: 84.2600 },
+            howToReach: { byAir: "Ranchi (IXR), ~155 km", byRail: "Lohardaga/Ranchi", byRoad: "Buses and taxis from Ranchi" },
+            tips: [
+                "🧥 Pack warm clothes: Even summers can be chilly in the mornings.",
+                "📶 Download offline maps: Mobile network is patchy.",
+                "💊 Carry basic medicines: Limited medical facilities.",
+                "📸 Bring a good camera: The landscapes are worth capturing.",
+                "🛏️ Book early: Limited accommodation, especially near viewpoints.",
+                "🧼 Respect local customs: Especially in tribal zones."
+            ],
+            nearby: [
+                { name: "Betla National Park", slug: "betla-national-park", desc: "~100 km away; elephants, tigers, rich biodiversity. Ideal for safaris and nature walks." },
+                { name: "Ranchi", desc: "Capital city with Hundru/Jonha falls, temples, tribal museums, and markets." },
+                { name: "Netarhat Dam", desc: "Peaceful spot for reflection and photography, surrounded by hills and forests." }
+            ],
+            homestays: [{ name: "Prabhat Vihar Hotel" }],
+            localFoodCulture: [
+                "Cuisine: Simple tribal fare—rice, dal, forest greens, and seasonal vegetables.",
+                "Crafts: Bamboo items, tribal jewelry, and handmade textiles.",
+                "Festivals: Sarhul (spring festival), Karma Puja, and tribal dances during harvest season."
+            ],
+            experienceVibe: "Netarhat isn’t about luxury—it’s about simplicity, silence, and soul. It’s where you wake up to bird calls, sip tea in misty air, and watch the sun melt into the horizon. It’s not just a destination—it’s a feeling.",
+            links: []
+        },
+        "patratu-valley": {
+            title: "Patratu Valley",
+            tag: "Scenic Drive",
+            tagline: "Serpentine roads and sweeping valley views",
+            description: "Patratu Valley, nestled in the Ramgarh district of Jharkhand, is a destination that feels like a secret whispered by the hills. Just 40 kilometers from Ranchi, this valley is a breathtaking blend of winding ghat roads, forested slopes, and the shimmering expanse of Patratu Lake. It’s a place where the journey is as mesmerizing as the destination—where every curve of the road reveals a new layer of beauty, and every breath of air carries the scent of pine and possibility.\n\nOnce known primarily for its thermal power station, Patratu has undergone a quiet transformation. What was once an industrial zone has blossomed into one of Jharkhand’s most beloved weekend getaways. The Patratu Ghat Road, with its snake-like bends and panoramic views, has become a pilgrimage route for bikers, photographers, and road trip enthusiasts. From above, the road resembles the famed Silk Route of North Bengal and Sikkim—an elegant ribbon of asphalt weaving through emerald hills.\n\nAt the heart of the valley lies Patratu Dam, built on the Nalkari River in 1962 to support the Patratu Thermal Power Station. Today, it’s more than just infrastructure—it’s a tranquil lake reflecting the sky, the hills, and the dreams of every traveler who pauses by its shores. The Jharkhand government has developed the Patratu Lake Resort, complete with landscaped gardens, boating facilities, and a lakeside promenade that invites you to linger.\n\nBut Patratu is more than just scenic views. It’s a place of contrasts—where misty mornings give way to golden afternoons, and the silence of the forest is punctuated by the laughter of families enjoying picnics. The valley remains relatively untouched by commercial tourism, preserving its raw charm. Small tea stalls and local eateries dot the roadside, offering warm chai and Jharkhandi snacks without disturbing the serenity.\n\nThe drive itself is a sensory experience. As you ascend the ghat road, the air grows cooler, the trees grow taller, and the horizon stretches wider. Hairpin bends demand your attention, but the views reward your effort. Sunrise and sunset here are not just events—they’re spectacles. The sky turns into a canvas of fire and mist, and the valley glows like a dream.\n\nHistorically, Patratu’s transformation began around 2010–2011, when the Jindal Steel Project brought new infrastructure and attention to the region. Roads were renovated, resorts were built, and the valley began to attract travelers from Ranchi and beyond. Today, it stands as a symbol of how nature and development can coexist—if nurtured with care.\n\nFor locals, Patratu is a place of pride. For visitors, it’s a place of peace. Whether you’re a solo traveler seeking silence, a couple chasing sunsets, or a family looking for a refreshing escape, Patratu Valley offers a slice of paradise—close to the city, yet worlds away.",
+            bestTime: "August to February",
+            highlights: ["Lakeside views", "Sunset points", "Boating"],
+            images: [],
+            location: { lat: 23.6167, lng: 84.9500 },
+            howToReach: { byAir: "Ranchi (IXR)", byRail: "Ranchi Jn.", byRoad: "~40 km from Ranchi" },
+            tips: [
+                "🧥 Carry light jackets: Evenings can be cool, especially near the lake.",
+                "📶 Mobile network: May be weak in forested areas—download maps in advance.",
+                "🚗 Drive carefully: Ghat roads have sharp curves; avoid night driving in monsoon.",
+                "📸 Bring a camera or drone: The valley is a visual treat.",
+                "🧃 Try local tea stalls: Small eateries offer authentic Jharkhandi flavors"
+            ],
+            nearby: [
+                { name: "Jonha Falls (Gautam Dhara)", desc: "A majestic waterfall ~40 km from Patratu, ideal for nature lovers." },
+                { name: "Ranchi City", desc: "Offers cultural sites, markets, and other waterfalls like Hundru and Dassam." },
+                { name: "Ramgarh", desc: "Explore local temples and tribal culture." }
+            ],
+            homestays: [{ name: "Courtyard by Marriott Ranchi" }],
+            localFoodCulture: [
+                "Cuisine: Rustic tribal meals—millets, rice starch, forest greens, bamboo shoots, and seasonal tubers.",
+                "Crafts: Bamboo baskets, tribal ornaments, and handwoven fabrics from nearby villages.",
+                "Festivals: Sarhul (spring bloom), Karma Puja (harvest ritual), and folk dances with drums and chants"
+            ],
+            experienceVibe: "Patratu Valley is where road trip dreams come true. It's not just about the destination—it's about the journey. The winding roads, the changing light, the quiet lake, and the forested silence all combine to create a mood that’s both exhilarating and meditative.\n\nWhether you're a biker chasing curves, a photographer chasing light, or a family chasing peace, Patratu Valley welcomes you with open arms and open skies",
+            links: []
+        },
+        "betla-national-park": {
+            title: "Betla National Park",
+            tag: "National Park",
+            tagline: "Wild heart of Jharkhand",
+            description: "Betla National Park, located in the Latehar district of Jharkhand, is a sprawling sanctuary of biodiversity, history, and raw wilderness. Spread across 359 square kilometers, this park is part of the larger Palamau Tiger Reserve, one of India’s earliest tiger conservation zones under Project Tiger. But Betla is more than just a tiger reserve—it’s a living museum of nature, where ancient forts, dense sal forests, and elusive wildlife converge to create an unforgettable experience.\n\nThe name “Betla” is derived from the initials of five key forest types found here: Bamboo, Evergreen, Tropical, Lush, and Arid. This diversity makes the park a hotspot for flora and fauna, with over 250 species of mammals, birds, and reptiles recorded. From majestic elephants and stealthy leopards to hornbills, civets, and sloth bears, Betla offers a chance to witness nature in its most untamed form.\n\nThe park is nourished by the Koel and Burha rivers, which carve through the landscape, creating lush valleys and watering holes that attract wildlife year-round. The terrain is a mix of rolling hills, dense forests, and open grasslands—ideal for safaris, treks, and birdwatching.\n\nOne of Betla’s most unique features is its historical depth. Within the forest lie the ruins of Palamu Fort, built by the Chero dynasty and later expanded by Raja Medini Ray. These moss-covered stone structures whisper stories of tribal kings, colonial skirmishes, and jungle lore. Exploring the fort feels like stepping into a forgotten chapter of Indian history, surrounded by chirping birds and rustling leaves.\n\nVisitors can choose from three types of safaris:\n- 🛻 Jeep Safari: The most popular option, offering deep access into the forest.\n- 🐘 Elephant Safari: A slow, majestic ride through the jungle—ideal for spotting wildlife up close.\n- 🛶 Boat Safari: Seasonal, depending on water levels, offering a tranquil view of riverside life.\n\nBetla is also a haven for birdwatchers, with sightings of crested serpent eagles, black ibis, jungle fowl, and even rare storks. The forest changes character with the seasons—lush and vibrant during monsoon, golden and crisp in winter, and dry yet dramatic in summer.\n\nWhether you’re a wildlife enthusiast, a history buff, or a nature lover, Betla National Park offers a layered experience that goes beyond the typical safari. It’s a place where every trail tells a story, every rustle hints at life, and every sunrise feels like a blessing.",
+            bestTime: "October to March",
+            highlights: ["Safari", "Palamu Fort", "Birdwatching"],
+            images: [],
+            location: { lat: 23.8833, lng: 84.1833 },
+            howToReach: { byAir: "Ranchi (IXR)", byRail: "Daltonganj (Medininagar)", byRoad: "Buses/taxis from Ranchi/Daltonganj" },
+            tips: ["Book safaris in advance", "Follow park rules"],
+            nearby: [{ name: "Netarhat", slug: "netarhat" }],
+            homestays: [{ name: "Hotel Shivaay Blue" }],
+            localFoodCulture: [
+            ],
+            experienceVibe: "",
+            links: []
+        },
+        "baba-baidyanath-temple": {
+            title: "Baba Baidyanath Temple",
+            tag: "Religious Site",
+            tagline: "Jyotirlinga of Lord Shiva in Deoghar",
+            description: "Shree Baba Baidyanath Jyotirlinga Mandir Deoghar, also known as Baba Dham, is one of the most revered spiritual destinations in India. Located in the holy town of Deoghar, Jharkhand, this temple is not only one of the 12 Jyotirlingas of Lord Shiva but also a Shakti Peetha, making it a rare confluence of divine masculine and feminine energies. It is a place where mythology, devotion, and healing converge—drawing millions of pilgrims every year.\n\n🕉️ Mythological Significance\nThe legend of Baba Baidyanath is deeply rooted in the tale of Ravana, the demon king of Lanka. According to Hindu mythology, Ravana performed intense penance to please Lord Shiva and offered each of his ten heads as sacrifice. Moved by his devotion, Shiva appeared and granted him a boon. Ravana requested the Jyotirlinga itself, which Shiva agreed to give on one condition: it must not be placed on the ground until it reached Lanka. On his journey, Ravana was tricked by the gods, and the lingam was placed in Deoghar—where it remains to this day. Thus, the site became sacred, and Shiva was worshipped here as Baidyanath, the “Lord of Physicians.”\n\n🛕 Architectural Grandeur\nThe temple complex houses 22 shrines, with the main sanctum dedicated to Lord Shiva. The architecture is simple yet powerful—built in the Nagara style with a towering spire and a sanctum that remains dimly lit, enhancing the spiritual ambiance. The Jyotirlinga is self-manifested (Swayambhu) and believed to possess healing powers. Devotees offer water from the Ganges, bel leaves, and sacred threads as part of their rituals.\n\n🌸 Shakti Peetha Connection\nThe temple is also one of the 51 Shakti Peethas, believed to be the spot where Sati’s heart fell when Lord Shiva carried her body across the universe. This makes Deoghar not just a Shaiva pilgrimage but also a center of Shakti worship, with a shrine dedicated to Jaya Durga, a fierce form of Goddess Parvati.\n\n🚶‍♂️ Pilgrimage & Rituals\nDuring the month of Shravan (July–August), millions of devotees undertake the Kanwar Yatra, walking barefoot from Sultanganj (around 100 km away) carrying holy water from the Ganges to offer at the temple. The journey is symbolic of Ravana’s devotion and Shiva’s healing grace. The temple hosts elaborate aartis, rudrabhishek, and special pujas throughout the year.",
+            bestTime: "October to March; Shravan for pilgrimage",
+            highlights: ["Main shrine", "Shivganga", "Evening aarti"],
+            images: [],
+            location: { lat: 24.4764, lng: 86.6920 },
+            howToReach: { byAir: "Deoghar Airport", byRail: "Jasidih Jn.", byRoad: "Buses from Ranchi/Bhagalpur" },
+            tips: [
+                "🧴 Carry water and snacks during peak pilgrimage season.",
+                "🧘‍♂️ Respect temple customs—dress modestly and follow queue etiquette.",
+                "📶 Mobile network is stable, but expect congestion during festivals.",
+                "🛕 Book darshan slots online during Shravani Mela to avoid long waits"
+            ],
+            nearby: [],
+            homestays: [{ name: "Hotel Ekta International" }],
+            localFoodCulture: [
+                "Cuisine: Simple vegetarian fare—khichdi, puri-sabzi, and seasonal sweets like pedas and tilkut.",
+                "Crafts: Religious souvenirs, rudraksha malas, and brass idols.",
+                "Festivals: Maha Shivaratri, Shravan Mela, and Navratri celebrated with grandeur."
+            ],
+            experienceVibe: "Visiting Baba Baidyanath Dham isn't just a pilgrimage—it's a deeply emotional and transformative journey. The moment you step into Deoghar, the air feels charged with devotion. The streets echo with chants of “Bol Bam!” and “Har Har Mahadev!”, and saffron-clad pilgrims walk barefoot, carrying sacred water from the Ganges in decorated kanwars—a symbol of surrender and faith.",
+            links: []
+        },
+        "shikharji-parasnath-hills": {
+            title: "Shikharji (Parasnath Hills)",
+            tag: "Spiritual Site",
+            tagline: "Sacred Jain pilgrimage trail",
+            description: "Shri Sammed Shikharji, also known as Parasnath Hills, is the most revered pilgrimage site in Jainism and the highest peak in Jharkhand, rising to an elevation of approximately 1,365 meters. Located in the Giridih district, this sacred mountain is not just a geographical marvel—it's a spiritual epicenter where 20 of the 24 Jain Tirthankaras attained moksha (liberation). The name “Shikharji” translates to “venerable peak,” and for centuries, it has drawn pilgrims, monks, and seekers from across the world.\n\nThe journey to Shikharji begins at Madhuban village, a serene base nestled at the foot of the hills. From here, pilgrims embark on a 9 km trek through dense forests, rocky paths, and tranquil shrines. The route is dotted with 31 tonks (temples or shrines), each dedicated to a Tirthankara or revered Jain monk. The trek is not just physical—it's deeply meditative. Every step is a prayer, every breath a surrender, and every tonk a reminder of the soul's journey toward liberation.\n\nAmong the most iconic spots is the Jal Mandir, a temple surrounded by water, symbolizing purity and detachment. Another highlight is Swarna Bhadra Koot, believed to be the site where Lord Parshvanatha attained moksha. The entire trail is enveloped in silence, broken only by the chants of pilgrims and the rustle of leaves—a setting that invites introspection and awe.\n\nBut Shikharji is not only sacred to Jains. For the Santhal tribal community, the mountain is known as Marang Buru, a deity representing the spirit of the forest. This dual reverence makes Shikharji a rare confluence of tribal and spiritual heritage, where ecological respect and religious devotion walk hand in hand.\n\nThe landscape itself is breathtaking. The Chotanagpur Plateau cradles the Parasnath Range, offering panoramic views, cool breezes, and a canopy of sal and bamboo trees. The air is crisp, the terrain challenging yet rewarding, and the vibe—profoundly peaceful.\n\nWhether you're a pilgrim seeking liberation, a trekker chasing altitude, or a traveler drawn to sacred geography, Shri Sammed Shikharji offers an experience that transcends religion and touches the soul. It's not just a destination—it's a journey inward.",
+            bestTime: "During Jain festivals; Oct-Mar",
+            highlights: ["Parasnath Peak", "Temples along the trail"],
+            images: [],
+            location: { lat: 23.9333, lng: 86.1500 },
+            howToReach: { byAir: "Ranchi/Gaya", byRail: "Parasnath/Giridih", byRoad: "Buses from major towns" },
+            tips: [
+                "🧘‍♂️ Start early: The trek is long and best done before noon.",
+                "🧴 Carry water and snacks: Limited shops along the route.",
+                "🧦 Wear trekking shoes: The path is rocky and steep.",
+                "📶 Download offline maps: Mobile signal fades in forest zones.",
+                "🛕 Respect silence: The route is sacred—avoid loud conversations or music"
+            ],
+            nearby: [],
+            homestays: [{ name: "The Orbit Retreat, Giridih" }],
+            localFoodCulture: [
+                "Cuisine: Jain satvik meals—no onion, garlic, or root vegetables. Khichdi, rice, and seasonal greens.",
+                "Crafts: Religious souvenirs, Jain scriptures, and hand-carved idols.",
+                "Festivals: Paryushana, Moksha Saptami, and Mahavir Jayanti celebrated with devotion"
+            ],
+            experienceVibe: "Shikharji is not just a pilgrimage—it's a soul trek. As you ascend through forests and shrines, the silence deepens, the air thins, and the mind quiets. Every tonk is a reminder of renunciation, every step a meditation. The vibe is serene, sacred, and timeless. Even non-Jains feel the spiritual pull of this mountain",
+            links: []
+        },
+        "ghatshila": {
+            title: "Ghatshila",
+            tag: "Historical Gem",
+            tagline: "Golden Subarnarekha and rustic charm",
+            description: "Ghatshila, a picturesque town nestled on the banks of the Subarnarekha River in Jharkhand's East Singhbhum district, is a soulful blend of nature, history, and quiet charm. The name itself—Ghat (riverbank) and Shila (rock)—reflects its geography: a place where the river meets rocky terrain, creating a landscape that’s both rugged and serene.\n\nSurrounded by forested hills, Ghatshila has long been a favorite retreat for those seeking peace away from the chaos of city life. It’s not just a scenic escape—it’s a place steeped in literary legacy, tribal culture, and geological wonder. The town was once home to Bibhutibhushan Bandopadhyay, the celebrated Bengali author of Pather Panchali, who found inspiration in its quiet beauty and wrote extensively about its landscapes.\n\nGhatshila’s charm lies in its diversity of experiences. You can trek through Phuldungri Hill, picnic by Burudi Lake, chase waterfalls like Dharagiri, or explore the spiritual aura of Rankini Temple, dedicated to Goddess Kali. The Narwa Forest offers a dense canopy for nature walks, while the Galudih Barrage and Subarnarekha River provide tranquil spots for reflection and photography.\n\nThe town also has a unique industrial legacy. It houses one of Asia’s earliest copper mines, with the Hindustan Copper Factory still operational—a reminder of Ghatshila’s role in India’s mining history. Nearby, the Jadugoda Mines add to its geological significance.\n\nWhether you’re a nature lover, a history buff, a spiritual seeker, or a literary enthusiast, Ghatshila offers a layered experience. It’s not just a destination—it’s a mood, a memory, and a moment of stillness in a fast-moving world.",
+            bestTime: "Monsoon (July-September) and winter",
+            highlights: ["Subarnarekha River", "Burudih Lake", "Phuldungri Hills"],
+            images: [],
+            location: { lat: 22.5850, lng: 86.4760 },
+            howToReach: { byAir: "Ranchi/Kolkata", byRail: "Ghatshila", byRoad: "Well-connected by road" },
+            tips: [
+                "🥾 Wear trekking shoes for hill and waterfall hikes.",
+                "🧴 Carry water and snacks—some spots are remote.",
+                "📶 Mobile signal may be weak near forested areas.",
+                "📸 Bring a camera—sunsets and river views are stunning.",
+                "🧘‍♂️ Respect local customs, especially at temples and tribal zones."
+
+            ],
+            nearby: [],
+            homestays: [{ name: "Buru Resort" }],
+            localFoodCulture: [
+                "Cuisine: Tribal and Bengali-influenced fare—rice, dal, forest greens, and seasonal vegetables.",
+                "Crafts: Bamboo items, tribal jewelry, and handmade textiles.",
+                "Festivals: Sarhul, Karma Puja, and local fairs with folk music and dance"
+            ],
+            experienceVibe: "Ghatshila offers a warm, rustic vibe where the rhythms of tribal life blend with Bengali influences. The air is filled with the aroma of local cuisine, the sound of folk music, and the sight of handmade crafts. Festivals and fairs bring the community together, making every visit feel like a celebration of culture and nature.",
+            links: []
+        }
+    };
+
+    function getParam(name) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name);
+    }
+
+    function createEl(tag, className, html) {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        if (html) el.innerHTML = html;
+        return el;
+    }
+
+    function renderDetail(dest, slug) {
+        const root = document.getElementById('detailRoot');
+        root.innerHTML = '';
+
+        // Hero slideshow (CSS-driven images). Add slug class so CSS can set images.
+        let header = createEl('div', 'hero hero-' + slug);
+        const slidesWrap = createEl('div', 'hero-slideshow');
+        ['slide-1','slide-2','slide-3'].forEach((cls, i) => {
+            const slide = createEl('div', 'hero-slide ' + cls + (i === 0 ? ' active' : ''));
+            slidesWrap.appendChild(slide);
+        });
+        const overlay = createEl('div', 'hero-overlay');
+        const content = createEl('div', 'hero-content');
+        const title = createEl('h2', '', dest.title);
+        const tag = createEl('span', 'card-tag', dest.tag || 'Destination');
+        const tagline = createEl('p', 'section-subtitle', dest.tagline || '');
+        content.appendChild(title);
+        content.appendChild(tag);
+        content.appendChild(tagline);
+        header.appendChild(slidesWrap);
+        header.appendChild(overlay);
+        header.appendChild(content);
+        // No manual controls/dots for auto-only slideshow
+
+        // Simple slideshow logic (CSS backgrounds controlled via detail.css)
+        let idx = 0;
+        const slides = Array.from(slidesWrap.children);
+        function show(i) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[i].classList.add('active');
+        }
+        function go(delta) { idx = (idx + delta + slides.length) % slides.length; show(idx); }
+        setInterval(() => go(1), 2500);
+
+        const grid = createEl('div', 'detail-grid');
+
+        const left = createEl('div', 'detail-left');
+        left.appendChild(createEl('h3', '', 'About'));
+        left.appendChild(createEl('p', '', dest.description || ''));
+
+        if (dest.highlights && dest.highlights.length) {
+            left.appendChild(createEl('h3', '', 'Highlights'));
+            const ul = createEl('ul', 'highlights');
+            dest.highlights.forEach(h => ul.appendChild(createEl('li', '', h)));
+            left.appendChild(ul);
+        }
+
+        if (dest.tips && dest.tips.length) {
+            left.appendChild(createEl('h3', '', 'Travel Tips'));
+            const ul2 = createEl('ul', 'tips');
+            dest.tips.forEach(t => ul2.appendChild(createEl('li', '', t)));
+            left.appendChild(ul2);
+        }
+
+        // Always show the section headings; fill content if provided
+        left.appendChild(createEl('h3', '', 'Local Food & Culture'));
+        if (dest.localFoodCulture && dest.localFoodCulture.length) {
+            const ul3 = createEl('ul', 'local-food-culture');
+            dest.localFoodCulture.forEach(item => ul3.appendChild(createEl('li', '', item)));
+            left.appendChild(ul3);
+        }
+
+        left.appendChild(createEl('h3', '', 'Experience & Vibe'));
+        if (dest.experienceVibe) {
+            left.appendChild(createEl('p', '', dest.experienceVibe));
+        }
+
+        const right = createEl('div', 'detail-right');
+        const infoCard = createEl('div', 'info-card');
+        infoCard.appendChild(createEl('p', '', `<strong>Best Time:</strong> ${dest.bestTime || '-'}`));
+        if (dest.howToReach) {
+            const htr = dest.howToReach;
+            infoCard.appendChild(createEl('p', '', `<strong>By Air:</strong> ${htr.byAir || '-'}`));
+            infoCard.appendChild(createEl('p', '', `<strong>By Rail:</strong> ${htr.byRail || '-'}`));
+            infoCard.appendChild(createEl('p', '', `<strong>By Road:</strong> ${htr.byRoad || '-'}`));
+        }
+        right.appendChild(infoCard);
+
+        if (dest.homestays && dest.homestays.length) {
+            const hs = createEl('div', 'info-card');
+            hs.appendChild(createEl('h4', '', 'Nearby Stays'));
+            dest.homestays.forEach(s => hs.appendChild(createEl('p', '', s.price ? `${s.name} – ${s.price}` : s.name)));
+            right.appendChild(hs);
+        }
+
+        if (dest.nearby && dest.nearby.length) {
+            const nb = createEl('div', 'info-card');
+            nb.appendChild(createEl('h4', '', 'Nearby Destinations'));
+            dest.nearby.forEach(n => {
+                const wrap = createEl('div', 'nearby-item');
+                if (n.slug) {
+                    const a = createEl('a', '', n.name);
+                    a.href = `detail.html?slug=${encodeURIComponent(n.slug)}`;
+                    a.target = '_blank';
+                    wrap.appendChild(a);
+                } else {
+                    wrap.appendChild(createEl('strong', '', n.name));
+                }
+                if (n.desc) {
+                    wrap.appendChild(createEl('p', 'nearby-desc', n.desc));
+                }
+                nb.appendChild(wrap);
+            });
+            right.appendChild(nb);
+        }
+
+        if (dest.links && dest.links.length) {
+            const lk = createEl('div', 'info-card');
+            lk.appendChild(createEl('h4', '', 'Links'));
+            dest.links.forEach(l => {
+                const a = createEl('a', '', l.label);
+                a.href = l.url;
+                a.target = '_blank';
+                lk.appendChild(a);
+            });
+            right.appendChild(lk);
+        }
+
+        grid.appendChild(left);
+        grid.appendChild(right);
+
+        // Gallery (images)
+        if (dest.images && dest.images.length) {
+            const gallery = createEl('div', 'detail-gallery');
+            gallery.appendChild(createEl('h3', '', 'Gallery'));
+            const gridWrap = createEl('div', 'detail-gallery-grid');
+            dest.images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                img.alt = dest.title;
+                img.addEventListener('click', () => openLightbox(src));
+                gridWrap.appendChild(img);
+            });
+            gallery.appendChild(gridWrap);
+            root.appendChild(gallery);
+        }
+
+        const actions = createEl('div', 'cta-buttons');
+        const planBtn = createEl('a', 'btn primary', 'Plan Trip');
+        planBtn.href = 'index.html#itinerary';
+        actions.appendChild(planBtn);
+
+        root.appendChild(header);
+        root.appendChild(actions);
+        root.appendChild(grid);
+
+        // Map
+        if (dest.location && window.L) {
+            const mapWrap = createEl('div', 'map-display');
+            const mapDiv = createEl('div', 'interactive-map');
+            mapDiv.id = 'detailMap';
+            mapWrap.appendChild(mapDiv);
+            root.appendChild(mapWrap);
+            const map = L.map('detailMap').setView([dest.location.lat, dest.location.lng], 11);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            L.marker([dest.location.lat, dest.location.lng]).addTo(map).bindPopup(dest.title);
+        }
+
+        if (window.gsap) {
+            gsap.from('#detailRoot > *', { opacity: 0, y: 20, stagger: 0.1 });
+        }
+    }
+
+    (function init() {
+        const fallbackSlug = 'netarhat';
+        const slug = getParam('slug') || fallbackSlug;
+        const dest = DESTINATIONS[slug];
+        const root = document.getElementById('detailRoot');
+        if (!dest) {
+            root.innerHTML = '<h2>Destination not found</h2><p>Please check the link or go back to <a href="index.html#destinations">Destinations</a>.</p>';
+            return;
+        }
+        renderDetail(dest, slug);
+        document.title = dest.title + ' – Destination Details';
+    })();
+
+    // Simple lightbox
+    function ensureLightboxRoot() {
+        let overlay = document.querySelector('.lightbox-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'lightbox-overlay';
+            const img = document.createElement('img');
+            img.className = 'lightbox-img';
+            overlay.appendChild(img);
+            overlay.addEventListener('click', () => overlay.classList.remove('active'));
+            document.body.appendChild(overlay);
+        }
+        return overlay;
+    }
+    function openLightbox(src) {
+        const overlay = ensureLightboxRoot();
+        const img = overlay.querySelector('.lightbox-img');
+        img.src = src;
+        overlay.classList.add('active');
+    }
+    </script>
+    <script>
+    // Minimal icons support if Font Awesome not loaded in this page
+    </script>
+</body>
+
+</html>
+

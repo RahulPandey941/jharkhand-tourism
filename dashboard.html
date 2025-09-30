@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tourism Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="index.html#home"><i class="fas fa-mountain"></i> Jharkhand Tourism</a></div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#destinations" class="nav-link">Destinations</a></li>
+                <li class="nav-item"><a href="index.html#virtual-tours" class="nav-link">Virtual Tours</a></li>
+                <li class="nav-item"><a href="index.html#marketplace" class="nav-link">Marketplace</a></li>
+                <li class="nav-item"><a href="index.html#homestays" class="nav-link">Homestays</a></li>
+                <li class="nav-item"><a href="history.html" class="nav-link">History & Culture</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li class="nav-item"><a href="index.html#itinerary" class="nav-link">Plan Trip</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="db-main">
+        <section class="db-header">
+            <div class="db-tabs">
+                <button class="db-tab">Packages</button>
+                <button class="db-tab active">Analytics</button>
+            </div>
+            <button class="db-add"><i class="fa fa-plus"></i> Add a new Package</button>
+        </section>
+
+        <section class="db-kpis">
+            <div class="kpi">
+                <div class="kpi-title">Total Revenue</div>
+                <div class="kpi-value">₹8.14 Cr</div>
+                <div class="kpi-trend positive">↑ 76%</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-title">Transactional Data</div>
+                <div class="kpi-value">383,303</div>
+                <div class="kpi-trend positive">↑ 14%</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-title">Total Bookings</div>
+                <div class="kpi-value">4,728</div>
+                <div class="kpi-trend positive">↑ 96%</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-title">Real-Time Data</div>
+                <div class="kpi-value">893</div>
+                <div class="kpi-sub">Packaged tours</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-title">Investment</div>
+                <div class="kpi-value">₹65.4 L</div>
+                <div class="kpi-trend positive">↑ 125%</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-title">Gross Profit</div>
+                <div class="kpi-value">₹2.31 Cr</div>
+                <div class="kpi-trend negative">↓ 26%</div>
+            </div>
+        </section>
+
+        <section class="db-grid">
+            <div class="db-card">
+                <div class="db-card-title">Booking Volume</div>
+                <canvas id="chartBookings"></canvas>
+            </div>
+            <div class="db-card">
+                <div class="db-card-title">Total Revenue</div>
+                <canvas id="chartRevenue"></canvas>
+            </div>
+            <div class="db-card">
+                <div class="db-card-title">Customer Feedback <span class="muted">4.0 • 12,758 reviews</span> <a href="#" class="link">View reviews</a></div>
+                <canvas id="chartFeedback"></canvas>
+            </div>
+
+            <div class="db-card">
+                <div class="db-card-title">Repeat vs new customers</div>
+                <div class="progress-list">
+                    <div class="progress-row"><span>Repeat customers</span><div class="bar"><span style="width:67%"></span></div><small>67%</small></div>
+                    <div class="progress-row"><span>New customers</span><div class="bar alt"><span style="width:33%"></span></div><small>33%</small></div>
+                </div>
+            </div>
+
+            <div class="db-card wide">
+                <div class="db-card-title">Cancellation Rate</div>
+                <div class="cancel-wrap">
+                    <div class="cancel-stat">
+                        <div class="cancel-badge">Cancellations</div>
+                        <div class="cancel-rate">26%</div>
+                        <div class="cancel-note">45 cancellations</div>
+                    </div>
+                    <div class="cancel-notes">
+                        <div class="note"><span class="tag hot"></span> Top reason: Hurricane approaching their destination</div>
+                        <div class="note"><span class="tag"></span> Least reason: Hurricane approaching their destination</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="db-card">
+                <div class="db-card-title">Age & Gender</div>
+                <canvas id="chartDemo"></canvas>
+            </div>
+        </section>
+
+        <aside class="db-side">
+            <div class="side-card upgrade">
+                <div class="side-title">Upgrade Today!</div>
+                <p>45 Coms registered</p>
+                <button class="btn primary" style="width:100%">Go Premium</button>
+            </div>
+
+            <div class="side-card">
+                <div class="side-title">Settings</div>
+                <p class="muted">Manage alerts, notifications and team.</p>
+            </div>
+            <div class="side-card">
+                <div class="side-title">Help Center</div>
+                <p class="muted">Guides and support.</p>
+            </div>
+
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom"><p>&copy; 2025 Jharkhand Tourism. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+    (function(){
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+        }
+    })();
+    </script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
+
+
